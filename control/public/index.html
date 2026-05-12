@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ModuBotic Control</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>ModuBotic Control</h1>
+          <p id="device">UNIHIKER K10</p>
+        </div>
+        <div class="status" id="status">offline</div>
+      </header>
+
+      <section class="metrics">
+        <article id="metric-k10-temperature">
+          <span>Temp K10</span>
+          <strong id="temperature">--</strong>
+        </article>
+        <article id="metric-env-temperature" class="hidden">
+          <span>Temperature(AHT20)</span>
+          <strong id="env-temperature">--</strong>
+        </article>
+        <article id="metric-env-humidity" class="hidden">
+          <span>Humidity(AHT20)</span>
+          <strong id="env-humidity">--</strong>
+        </article>
+        <article id="metric-env-pressure" class="hidden">
+          <span>Pressure(BMP280)</span>
+          <strong id="env-pressure">--</strong>
+        </article>
+        <article id="metric-light">
+          <span>Luz K10</span>
+          <strong id="light">--</strong>
+        </article>
+        <article id="metric-ip">
+          <span>IP do K10</span>
+          <strong id="ip">--</strong>
+        </article>
+      </section>
+
+      <section class="chart-panel">
+        <div class="chart-header">
+          <h2>Telemetria</h2>
+          <div class="chart-tools">
+            <div class="chart-legend" id="chart-legend"></div>
+            <button type="button" id="clear-telemetry">Limpar grafico</button>
+          </div>
+        </div>
+        <div class="chart-body">
+          <canvas id="telemetry-chart" width="900" height="260"></canvas>
+          <div class="chart-stats" id="telemetry-stats"></div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <section class="control-panel">
+          <h2>Comandos</h2>
+
+          <div class="robot-controls">
+            <div class="head-control">
+              <span>Cabeca</span>
+              <div class="button-row">
+                <button type="button" title="Cabeca esquerda" data-command="HEAD_LEFT">&#8592;</button>
+                <button type="button" title="Cabeca centro" data-command="HEAD_CENTER">&#9679;</button>
+                <button type="button" title="Cabeca direita" data-command="HEAD_RIGHT">&#8594;</button>
+              </div>
+            </div>
+
+            <div class="arms-row">
+              <div class="arm-control left-arm">
+                <span>Braco esquerdo</span>
+                <button type="button" title="Braco esquerdo subir" data-command="ARM_LEFT_UP">&#8593;</button>
+                <button type="button" title="Braco esquerdo centro" data-command="ARM_LEFT_CENTER">&#9679;</button>
+                <button type="button" title="Braco esquerdo baixar" data-command="ARM_LEFT_DOWN">&#8595;</button>
+              </div>
+
+              <div class="body-center">
+                <span>Body</span>
+                <button type="button" class="stop" title="Parar tudo" data-command="STOP">&#9632;</button>
+              </div>
+
+              <div class="arm-control right-arm">
+                <span>Braco direito</span>
+                <button type="button" title="Braco direito subir" data-command="ARM_RIGHT_UP">&#8593;</button>
+                <button type="button" title="Braco direito centro" data-command="ARM_RIGHT_CENTER">&#9679;</button>
+                <button type="button" title="Braco direito baixar" data-command="ARM_RIGHT_DOWN">&#8595;</button>
+              </div>
+            </div>
+
+            <div class="drive-control">
+              <span>Rodas</span>
+              <div class="drive-pad">
+                <button type="button" class="forward" title="Frente" data-command="MOVE_FORWARD">&#8593;</button>
+                <button type="button" class="left" title="Virar esquerda" data-command="TURN_LEFT">&#8592;</button>
+                <button type="button" class="stop" title="Parar" data-command="STOP">&#9632;</button>
+                <button type="button" class="right" title="Virar direita" data-command="TURN_RIGHT">&#8594;</button>
+                <button type="button" class="back" title="Tras" data-command="MOVE_BACK">&#8595;</button>
+              </div>
+            </div>
+
+            <div class="module-controls">
+              <span>Modulos</span>
+              <div class="module-grid">
+                <button type="button" title="Ativar LCD" data-command="LCD_ON">LCD ON</button>
+                <button type="button" class="secondary" title="Desativar LCD" data-command="LCD_OFF">LCD OFF</button>
+                <button type="button" title="Ativar olhos" data-command="EYES_ON">EYES ON</button>
+                <button type="button" class="secondary" title="Desativar olhos" data-command="EYES_OFF">EYES OFF</button>
+                <button type="button" class="secondary wide" title="Reiniciar olhos" data-command="EYES_RESET">EYES RESET</button>
+                <button type="button" title="Acender todos os LEDs" data-command="EYES_ALL_ON">EYES ALL</button>
+                <button type="button" class="secondary" title="Apagar todos os LEDs" data-command="EYES_CLEAR">EYES CLEAR</button>
+                <button type="button" class="secondary wide" title="Varrer LEDs um a um" data-command="EYES_SCAN">EYES SCAN</button>
+              </div>
+            </div>
+
+            <div class="sensor-config">
+              <span>Sensores I2C externos</span>
+              <label>
+                Braco esquerdo (I2C)
+                <select id="left-arm-sensor">
+                  <option value="none" selected>Nada</option>
+                  <option value="aht20-bmp280">AHT20 + BMP280</option>
+                  <option value="gy33">GY-33 cor</option>
+                </select>
+              </label>
+              <label>
+                Braco direito (I2C)
+                <select id="right-arm-sensor">
+                  <option value="none" selected>Nada</option>
+                  <option value="aht20-bmp280">AHT20 + BMP280</option>
+                  <option value="gy33">GY-33 cor</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="color-reader">
+              <span>Sensor de cor</span>
+              <div class="color-actions">
+                <button type="button" id="read-color">Ler cor</button>
+                <button type="button" class="secondary" id="debug-color">Debug I2C</button>
+                <button type="button" data-command="ENV_READ">Ler ambiente</button>
+                <button type="button" class="secondary" data-command="ENV_SCAN">Scan I2C</button>
+              </div>
+              <div class="color-result">
+                <div id="color-swatch" class="color-swatch"></div>
+                <strong id="color-rgb">RGB --</strong>
+                <small id="color-updated">sem leitura</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side-panel">
+          <h2>Comando</h2>
+          <form id="command-form">
+            <select id="command-select">
+              <option value="WHEELS_TEST">WHEELS_TEST</option>
+              <option value="MOVE_FORWARD">MOVE_FORWARD</option>
+              <option value="MOVE_BACK">MOVE_BACK</option>
+              <option value="TURN_LEFT">TURN_LEFT</option>
+              <option value="TURN_RIGHT">TURN_RIGHT</option>
+              <option value="STOP">STOP</option>
+              <option value="HEAD_LEFT">HEAD_LEFT</option>
+              <option value="HEAD_CENTER">HEAD_CENTER</option>
+              <option value="HEAD_RIGHT">HEAD_RIGHT</option>
+              <option value="ARM_LEFT_UP">ARM_LEFT_UP</option>
+              <option value="ARM_LEFT_CENTER">ARM_LEFT_CENTER</option>
+              <option value="ARM_LEFT_DOWN">ARM_LEFT_DOWN</option>
+              <option value="ARM_RIGHT_UP">ARM_RIGHT_UP</option>
+              <option value="ARM_RIGHT_CENTER">ARM_RIGHT_CENTER</option>
+              <option value="ARM_RIGHT_DOWN">ARM_RIGHT_DOWN</option>
+              <option value="EYES_ON">EYES_ON</option>
+              <option value="EYES_OFF">EYES_OFF</option>
+              <option value="EYES_RESET">EYES_RESET</option>
+              <option value="LCD_ON">LCD_ON</option>
+              <option value="LCD_OFF">LCD_OFF</option>
+              <option value="GY33_READ">GY33_READ</option>
+              <option value="GY33_DEBUG">GY33_DEBUG</option>
+              <option value="GY33_ON">GY33_ON</option>
+              <option value="GY33_OFF">GY33_OFF</option>
+              <option value="ENV_READ">ENV_READ</option>
+              <option value="ENV_SCAN">ENV_SCAN</option>
+              <option value="ENV_ON">ENV_ON</option>
+              <option value="ENV_OFF">ENV_OFF</option>
+              <option value="manual">Outro...</option>
+            </select>
+            <input id="command" class="hidden" type="text" placeholder="Comando manual" autocomplete="off">
+            <button type="submit">Enviar</button>
+          </form>
+
+          <p class="last-command">Ultimo: <strong id="last-command">--</strong></p>
+
+          <section class="debug-panel">
+            <div class="debug-header">
+              <h2>Debug Motion</h2>
+              <div class="debug-actions">
+                <button type="button" id="peek-command">Ver</button>
+                <button type="button" id="clear-commands">Limpar</button>
+              </div>
+            </div>
+            <dl>
+              <dt>Proximo</dt>
+              <dd id="next-command">--</dd>
+              <dt>Pendentes</dt>
+              <dd id="pending-count">0</dd>
+              <dt>Fila</dt>
+              <dd id="pending-commands">--</dd>
+              <dt>Pedidos</dt>
+              <dd id="motion-count">0</dd>
+              <dt>Ultimo hit</dt>
+              <dd id="last-motion-hit">--</dd>
+              <dt>Poll</dt>
+              <dd id="poll-count">0</dd>
+              <dt>Ultimo poll</dt>
+              <dd id="last-poll-hit">--</dd>
+              <dt>Telemetria</dt>
+              <dd id="telemetry-count">0</dd>
+              <dt>Ultima tel.</dt>
+              <dd id="last-telemetry-hit">--</dd>
+            </dl>
+          </section>
+
+          <h2>Ultima mensagem</h2>
+          <p id="message">A espera de dados do K10</p>
+
+          <h2>Historico</h2>
+          <ol id="history"></ol>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

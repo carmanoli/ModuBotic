@@ -1,0 +1,2134 @@
+{
+  "device": "UNIHIKER K10",
+  "temperature": 30.84,
+  "humidity": 84.1,
+  "k10Temperature": 30.84,
+  "dhtTemperature": null,
+  "dhtHumidity": null,
+  "dhtPin": null,
+  "dhtUpdatedAt": null,
+  "envTemperature": 21.7,
+  "envHumidity": 84.1,
+  "envPressure": 1008.0,
+  "envBmpTemperature": 22.5,
+  "envBmpAddress": "77",
+  "envUpdatedAt": 1778609850018,
+  "temperatureSource": "K10",
+  "light": 12.0,
+  "gas": null,
+  "color": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "redRaw": null,
+    "greenRaw": null,
+    "blueRaw": null,
+    "clear": null,
+    "lux": null,
+    "ct": null
+  },
+  "colorUpdatedAt": 1778609851234,
+  "ip": "10.0.10.193",
+  "message": "A espera de dados do K10",
+  "camera": null,
+  "updatedAt": 1778609979582,
+  "history": [
+    {
+      "type": "telemetry",
+      "at": 1778609979582,
+      "values": {
+        "k10Temperature": 30.84,
+        "temperature": 30.84,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609978722,
+      "values": {
+        "k10Temperature": 30.84,
+        "temperature": 30.84,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609977699,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609976702,
+      "values": {
+        "k10Temperature": 30.82,
+        "temperature": 30.82,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609975762,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609974904,
+      "values": {
+        "k10Temperature": 30.82,
+        "temperature": 30.82,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609974045,
+      "values": {
+        "k10Temperature": 30.83,
+        "temperature": 30.83,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609973191,
+      "values": {
+        "k10Temperature": 30.8,
+        "temperature": 30.8,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609972065,
+      "values": {
+        "k10Temperature": 30.82,
+        "temperature": 30.82,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609971211,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609970362,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609969504,
+      "values": {
+        "k10Temperature": 30.8,
+        "temperature": 30.8,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609968583,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609967568,
+      "values": {
+        "k10Temperature": 30.8,
+        "temperature": 30.8,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609966701,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609965748,
+      "values": {
+        "k10Temperature": 30.82,
+        "temperature": 30.82,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609964896,
+      "values": {
+        "k10Temperature": 30.82,
+        "temperature": 30.82,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609963976,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609963053,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609962077,
+      "values": {
+        "k10Temperature": 30.81,
+        "temperature": 30.81,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609961200,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609960246,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609959347,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609958478,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 2.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609957552,
+      "values": {
+        "k10Temperature": 30.8,
+        "temperature": 30.8,
+        "light": 2.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609956330,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 2.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609955412,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609954518,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609953616,
+      "values": {
+        "k10Temperature": 30.8,
+        "temperature": 30.8,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609952588,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609951687,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609950786,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609949927,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609949073,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609948205,
+      "values": {
+        "k10Temperature": 30.79,
+        "temperature": 30.79,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609947200,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609946336,
+      "values": {
+        "k10Temperature": 30.77,
+        "temperature": 30.77,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609945478,
+      "values": {
+        "k10Temperature": 30.77,
+        "temperature": 30.77,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609944624,
+      "values": {
+        "k10Temperature": 30.78,
+        "temperature": 30.78,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609943701,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609942602,
+      "values": {
+        "k10Temperature": 30.77,
+        "temperature": 30.77,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609941744,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609940882,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609940015,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609939092,
+      "values": {
+        "k10Temperature": 30.77,
+        "temperature": 30.77,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609938023,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609937179,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609936334,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609935406,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609934484,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609933492,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609932641,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609931595,
+      "values": {
+        "k10Temperature": 30.77,
+        "temperature": 30.77,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609930747,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609929875,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 2.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609928953,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609928033,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609927111,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609926190,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609925213,
+      "values": {
+        "k10Temperature": 30.73,
+        "temperature": 30.73,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609924344,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609923455,
+      "values": {
+        "k10Temperature": 30.76,
+        "temperature": 30.76,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609922598,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609921755,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609920902,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609920046,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609919126,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609918202,
+      "values": {
+        "k10Temperature": 30.73,
+        "temperature": 30.73,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609917202,
+      "values": {
+        "k10Temperature": 30.73,
+        "temperature": 30.73,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609916305,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609915439,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609914516,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609913542,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609912688,
+      "values": {
+        "k10Temperature": 30.73,
+        "temperature": 30.73,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609911699,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609910700,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609909847,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609908986,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609908066,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609907049,
+      "values": {
+        "k10Temperature": 30.75,
+        "temperature": 30.75,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609906204,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609905228,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609904379,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609903457,
+      "values": {
+        "k10Temperature": 30.74,
+        "temperature": 30.74,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609902533,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609901552,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609900692,
+      "values": {
+        "k10Temperature": 30.69,
+        "temperature": 30.69,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609899464,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609898469,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609898303,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609897620,
+      "values": {
+        "k10Temperature": 30.73,
+        "temperature": 30.73,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609896698,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609895811,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609894707,
+      "values": {
+        "k10Temperature": 30.71,
+        "temperature": 30.71,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609893831,
+      "command": "TURN_LEFT"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609893624,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609892704,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609891767,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609891720,
+      "values": {
+        "k10Temperature": 30.7,
+        "temperature": 30.7,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609890862,
+      "values": {
+        "k10Temperature": 30.72,
+        "temperature": 30.72,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609889940,
+      "values": {
+        "k10Temperature": 30.71,
+        "temperature": 30.71,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609889055,
+      "values": {
+        "k10Temperature": 30.69,
+        "temperature": 30.69,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609888200,
+      "values": {
+        "k10Temperature": 30.68,
+        "temperature": 30.68,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609887348,
+      "values": {
+        "k10Temperature": 30.68,
+        "temperature": 30.68,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609886254,
+      "values": {
+        "k10Temperature": 30.69,
+        "temperature": 30.69,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609885807,
+      "command": "MOVE_FORWARD"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609885189,
+      "values": {
+        "k10Temperature": 30.68,
+        "temperature": 30.68,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609884104,
+      "values": {
+        "k10Temperature": 30.68,
+        "temperature": 30.68,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609883040,
+      "values": {
+        "k10Temperature": 30.68,
+        "temperature": 30.68,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609882862,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609881958,
+      "values": {
+        "k10Temperature": 30.68,
+        "temperature": 30.68,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609880999,
+      "values": {
+        "k10Temperature": 30.67,
+        "temperature": 30.67,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609880144,
+      "values": {
+        "k10Temperature": 30.66,
+        "temperature": 30.66,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609879287,
+      "values": {
+        "k10Temperature": 30.65,
+        "temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609878438,
+      "values": {
+        "k10Temperature": 30.65,
+        "temperature": 30.65,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609877588,
+      "values": {
+        "k10Temperature": 30.66,
+        "temperature": 30.66,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609876729,
+      "values": {
+        "k10Temperature": 30.66,
+        "temperature": 30.66,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609875867,
+      "values": {
+        "k10Temperature": 30.66,
+        "temperature": 30.66,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609875006,
+      "values": {
+        "k10Temperature": 30.64,
+        "temperature": 30.64,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609874151,
+      "values": {
+        "k10Temperature": 30.64,
+        "temperature": 30.64,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609873296,
+      "values": {
+        "k10Temperature": 30.67,
+        "temperature": 30.67,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609872430,
+      "values": {
+        "k10Temperature": 30.67,
+        "temperature": 30.67,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609871438,
+      "values": {
+        "k10Temperature": 30.67,
+        "temperature": 30.67,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609870584,
+      "values": {
+        "k10Temperature": 30.65,
+        "temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609869356,
+      "values": {
+        "k10Temperature": 30.65,
+        "temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609868671,
+      "command": "MOVE_FORWARD"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609868312,
+      "values": {
+        "k10Temperature": 30.66,
+        "temperature": 30.66,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609867426,
+      "values": {
+        "k10Temperature": 30.66,
+        "temperature": 30.66,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609866336,
+      "values": {
+        "k10Temperature": 30.65,
+        "temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609866279,
+      "command": "TURN_RIGHT"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609865476,
+      "values": {
+        "k10Temperature": 30.65,
+        "temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609864618,
+      "values": {
+        "k10Temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609863524,
+      "values": {
+        "k10Temperature": 30.65,
+        "light": 18.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609863347,
+      "command": "TURN_LEFT"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609862220,
+      "values": {
+        "k10Temperature": 30.63,
+        "light": 18.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609861374,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 20.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609860607,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609860451,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 20.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609859528,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 20.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609858235,
+      "values": {
+        "k10Temperature": 30.63,
+        "light": 18.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609857399,
+      "command": "LCD_OFF"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609857378,
+      "values": {
+        "k10Temperature": 30.62,
+        "light": 18.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609856459,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 18.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609855450,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 20.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609854307,
+      "values": {
+        "k10Temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609853362,
+      "values": {
+        "k10Temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609852503,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609851234,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609850018,
+      "values": {
+        "temperature": 21.7,
+        "envTemperature": 21.7,
+        "humidity": 84.1,
+        "envHumidity": 84.1,
+        "envBmpTemperature": 22.5,
+        "envPressure": 1008.0,
+        "envBmpAddress": "77",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609848776,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609845091,
+      "values": {
+        "temperature": 21.7,
+        "envTemperature": 21.7,
+        "humidity": 84.1,
+        "envHumidity": 84.1,
+        "envBmpTemperature": 22.5,
+        "envPressure": 1008.1,
+        "envBmpAddress": "77",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609843861,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609843383,
+      "command": "LCD_ON"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609841350,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609837919,
+      "command": "HEAD_LEFT"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609836812,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609835727,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609834656,
+      "values": {
+        "temperature": 21.7,
+        "envTemperature": 21.7,
+        "humidity": 84.1,
+        "envHumidity": 84.1,
+        "envBmpTemperature": 22.5,
+        "envPressure": 1008.1,
+        "envBmpAddress": "77",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609833983,
+      "command": "HEAD_RIGHT"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609833580,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609831402,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609829593,
+      "values": {
+        "k10Temperature": 30.56,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609828501,
+      "values": {
+        "k10Temperature": 30.54,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609827071,
+      "values": {
+        "k10Temperature": 30.6,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609820674,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609819599,
+      "values": {
+        "temperature": 21.7,
+        "envTemperature": 21.7,
+        "humidity": 84.1,
+        "envHumidity": 84.1,
+        "envBmpTemperature": 22.5,
+        "envPressure": 1008.1,
+        "envBmpAddress": "77",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609818524,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609816372,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609815291,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609814063,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609812071,
+      "command": "TURN_LEFT"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609811559,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609811070,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609809761,
+      "values": {
+        "k10Temperature": 30.67,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609808559,
+      "values": {
+        "k10Temperature": 30.66,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609807375,
+      "values": {
+        "k10Temperature": 30.65,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609806598,
+      "command": "MOVE_FORWARD"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609806266,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609805772,
+      "command": "GY33_ON"
+    },
+    {
+      "type": "command",
+      "at": 1778609805709,
+      "command": "ENV_ON"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609805174,
+      "values": {
+        "k10Temperature": 30.66,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609804082,
+      "values": {
+        "k10Temperature": 30.65,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609803002,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609801871,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609800781,
+      "values": {
+        "k10Temperature": 30.64,
+        "light": 12.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609799932,
+      "values": {
+        "k10Temperature": 30.67,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609798932,
+      "values": {
+        "k10Temperature": 30.63,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609795144,
+      "values": {
+        "temperature": 21.6,
+        "envTemperature": 21.6,
+        "humidity": 84.2,
+        "envHumidity": 84.2,
+        "envBmpTemperature": 22.4,
+        "envPressure": 1008.0,
+        "envBmpAddress": "77",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609794061,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609791792,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609790695,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609789492,
+      "values": {
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609789391,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609787337,
+      "values": {
+        "temperature": 21.6,
+        "envTemperature": 21.6,
+        "humidity": 84.2,
+        "envHumidity": 84.2,
+        "envBmpTemperature": 22.4,
+        "envPressure": 1008.0,
+        "envBmpAddress": "77",
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "redRaw": null,
+          "greenRaw": null,
+          "blueRaw": null,
+          "clear": null,
+          "lux": null,
+          "ct": null
+        }
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609786535,
+      "command": "STOP"
+    },
+    {
+      "type": "command",
+      "at": 1778609785839,
+      "command": "STOP"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609785185,
+      "values": {
+        "k10Temperature": 30.61,
+        "temperature": 30.61,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609783957,
+      "values": {
+        "k10Temperature": 30.63,
+        "temperature": 30.63,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    },
+    {
+      "type": "command",
+      "at": 1778609783168,
+      "command": "MOVE_FORWARD"
+    },
+    {
+      "type": "telemetry",
+      "at": 1778609782606,
+      "values": {
+        "k10Temperature": 30.63,
+        "temperature": 30.63,
+        "light": 13.0,
+        "ip": "10.0.10.193"
+      }
+    }
+  ],
+  "commands": [],
+  "pendingCommand": null,
+  "lastCommand": {
+    "command": "STOP",
+    "at": 1778609898471
+  },
+  "lastMotionRequest": {
+    "at": 1778609979588,
+    "method": "POST",
+    "client": "10.0.10.193",
+    "payload": {
+      "ip": "10.0.10.193",
+      "temperature": "30.84",
+      "light": "12",
+      "body": "\r\n"
+    },
+    "response": "NONE"
+  },
+  "motionRequestCount": 18765,
+  "lastPollRequest": null,
+  "pollRequestCount": 0,
+  "lastTelemetryRequest": {
+    "at": 1778609851237,
+    "client": "10.0.10.193",
+    "payload": {
+      "rgb": "0,0,0",
+      "body": "\r\n",
+      "r": "0",
+      "g": "0",
+      "b": "0",
+      "source": "gy33"
+    },
+    "response": "OK"
+  },
+  "telemetryRequestCount": 28022,
+  "lastDhtRequestAt": 1778602853678
+}
