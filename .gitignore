@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+control/data/
+mind/_mind_mp_edit/
+mind/*.mp
