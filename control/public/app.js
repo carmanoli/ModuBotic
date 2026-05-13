@@ -35,8 +35,7 @@ const ids = {
   lastPollHit: document.querySelector("#last-poll-hit"),
   telemetryCount: document.querySelector("#telemetry-count"),
   lastTelemetryHit: document.querySelector("#last-telemetry-hit"),
-  leftArmSensor: document.querySelector("#left-arm-sensor"),
-  rightArmSensor: document.querySelector("#right-arm-sensor"),
+  i2cDevices: document.querySelector("#i2c-devices"),
   readColor: document.querySelector("#read-color"),
   debugColor: document.querySelector("#debug-color"),
   colorSwatch: document.querySelector("#color-swatch"),
@@ -45,7 +44,6 @@ const ids = {
   clearTelemetry: document.querySelector("#clear-telemetry"),
 };
 
-const SENSOR_CONFIG_STORAGE_KEY = "modubotic.sensorConfig.v5";
 const SENSOR_FRESH_MS = 30000;
 
 function formatMetric(value, suffix = "") {
@@ -140,21 +138,6 @@ function formatSeriesRange(item) {
   return "sem dados";
 }
 
-function currentSensorConfig() {
-  return {
-    left: ids.leftArmSensor?.value || "none",
-    right: ids.rightArmSensor?.value || "none",
-  };
-}
-
-function hasSelectedEnvironment(config) {
-  return config.left === "aht20-bmp280" || config.right === "aht20-bmp280";
-}
-
-function hasSelectedGy33(config) {
-  return config.left === "gy33" || config.right === "gy33";
-}
-
 function renderTelemetryLegend(series) {
   if (!ids.chartLegend) return;
 
@@ -187,7 +170,7 @@ function renderTelemetryStats(series) {
   }
 }
 
-function renderTelemetryChart(history, sensorConfig = currentSensorConfig()) {
+function renderTelemetryChart(history, state = {}) {
   const canvas = ids.telemetryChart;
   if (!canvas) return;
 
@@ -203,7 +186,7 @@ function renderTelemetryChart(history, sensorConfig = currentSensorConfig()) {
   const chart = { x: 46, y: 10, width: rect.width - 66, height: rect.height - 40 };
   const series = [];
 
-  if (hasSelectedEnvironment(sensorConfig)) {
+  if (isFresh(state.envUpdatedAt) || collectSeries(history, "envTemperature").length > 0) {
     series.push(
       { key: "envTemperature", label: "Temperature(AHT20)", color: "#ea580c", scale: "temperature", values: collectSeries(history, "envTemperature") },
       { key: "envHumidity", label: "Humidity(AHT20)", color: "#0891b2", scale: "humidity", values: collectSeries(history, "envHumidity") },
@@ -235,8 +218,8 @@ function renderTelemetryChart(history, sensorConfig = currentSensorConfig()) {
     ctx.fillStyle = "#647084";
     ctx.font = "14px Arial";
     const message = series.length
-      ? "A espera de dados dos sensores I2C selecionados"
-      : "Seleciona um sensor I2C para o grafico";
+      ? "A espera de dados dos sensores I2C"
+      : "Sem dados de sensores I2C";
     ctx.fillText(message, chart.x + 12, chart.y + 32);
     return;
   }
@@ -281,6 +264,7 @@ async function refresh() {
   ids.message.textContent = state.message || "A espera de dados do K10";
   ids.lastCommand.textContent = state.lastCommand?.command || "--";
   renderColorReading(state.color, state.colorUpdatedAt);
+  renderI2cDevices(state.i2cDevices || [], state.i2cUpdatedAt);
 
   const online = isOnline(state.updatedAt);
   ids.status.textContent = online ? "online" : "offline";
@@ -296,7 +280,7 @@ async function refresh() {
     ids.history.appendChild(li);
   }
 
-  renderTelemetryChart(state.history || [], currentSensorConfig());
+  renderTelemetryChart(state.history || [], state);
 
   await refreshCommandDebug();
 }
@@ -317,6 +301,38 @@ function renderColorReading(color, updatedAt) {
   ids.colorSwatch.style.background = `rgb(${r}, ${g}, ${b})`;
   ids.colorRgb.textContent = `RGB ${r}, ${g}, ${b}`;
   ids.colorUpdated.textContent = formatTime(updatedAt);
+}
+
+function formatI2cDeviceName(name) {
+  return String(name || "UNKNOWN").replaceAll("_", " ");
+}
+
+function renderI2cDevices(devices, updatedAt) {
+  if (!ids.i2cDevices) return;
+
+  ids.i2cDevices.innerHTML = "";
+
+  if (!devices.length) {
+    const empty = document.createElement("div");
+    empty.className = "i2c-empty";
+    empty.textContent = updatedAt ? "Nenhum dispositivo I2C" : "A espera do scan I2C";
+    ids.i2cDevices.appendChild(empty);
+    return;
+  }
+
+  for (const device of devices) {
+    const row = document.createElement("div");
+    row.className = "i2c-device";
+
+    const address = document.createElement("strong");
+    address.textContent = device.address;
+
+    const name = document.createElement("span");
+    name.textContent = formatI2cDeviceName(device.name);
+
+    row.append(address, name);
+    ids.i2cDevices.appendChild(row);
+  }
 }
 
 function formatHistoryItem(item) {
@@ -373,55 +389,6 @@ async function sendCommand(command) {
   await refresh();
 }
 
-function restoreSensorConfig() {
-  if (!ids.leftArmSensor || !ids.rightArmSensor) return false;
-
-  const stored = localStorage.getItem(SENSOR_CONFIG_STORAGE_KEY);
-  if (!stored) return false;
-
-  try {
-    const config = JSON.parse(stored);
-    ids.leftArmSensor.value = config.left || "none";
-    ids.rightArmSensor.value = config.right || "none";
-    return true;
-  } catch {
-    localStorage.removeItem(SENSOR_CONFIG_STORAGE_KEY);
-    return false;
-  }
-}
-
-async function updateSensorConfig(changedSide) {
-  if (!ids.leftArmSensor || !ids.rightArmSensor) return;
-
-  if (changedSide === "left" && ids.leftArmSensor.value !== "none" && ids.leftArmSensor.value === ids.rightArmSensor.value) {
-    ids.rightArmSensor.value = "none";
-  }
-
-  if (changedSide === "right" && ids.rightArmSensor.value !== "none" && ids.rightArmSensor.value === ids.leftArmSensor.value) {
-    ids.leftArmSensor.value = "none";
-  }
-
-  const config = currentSensorConfig();
-  localStorage.setItem(SENSOR_CONFIG_STORAGE_KEY, JSON.stringify(config));
-
-  const commands = [];
-  if (hasSelectedEnvironment(config)) {
-    commands.push("ENV_ON");
-  } else {
-    commands.push("ENV_OFF");
-  }
-
-  if (hasSelectedGy33(config)) {
-    commands.push("GY33_ON");
-  } else {
-    commands.push("GY33_OFF");
-  }
-
-  for (const command of commands) {
-    await sendCommand(command);
-  }
-}
-
 ids.commandForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const selectedCommand = ids.commandSelect?.value || "";
@@ -468,19 +435,6 @@ ids.readColor?.addEventListener("click", async () => {
 
 ids.debugColor?.addEventListener("click", async () => {
   await sendCommand("GY33_DEBUG");
-});
-
-const restoredSensorConfig = restoreSensorConfig();
-if (restoredSensorConfig) {
-  updateSensorConfig("restore").catch(console.error);
-}
-
-ids.leftArmSensor?.addEventListener("change", () => {
-  updateSensorConfig("left");
-});
-
-ids.rightArmSensor?.addEventListener("change", () => {
-  updateSensorConfig("right");
 });
 
 refresh();

@@ -45,6 +45,7 @@
 #include "gy33_color_sensor.h"
 #include "aht20_bmp280_sensor.h"
 #include "keypad_menu.h"
+#include "i2c_bus_watchdog.h"
 
 const unsigned long BAUD_CONSOLE = 115200;
 const unsigned long BAUD_LINK = 9600;
@@ -74,6 +75,7 @@ const int LEFT_WHEEL_BACK_US = 1000;
 const int RIGHT_WHEEL_FORWARD_US = 1000;
 const int RIGHT_WHEEL_BACK_US = 2000;
 const unsigned long BODY_SERVO_DETACH_DELAY_MS = 700;
+const unsigned long I2C_AUTO_ENABLE_RETRY_MS = 10000;
 
 String consoleLine;
 String k10Line;
@@ -87,9 +89,11 @@ unsigned long lastBodyServoMoveAt = 0;
 int activeLeftWheelUs = LEFT_WHEEL_STOP_US;
 int activeRightWheelUs = RIGHT_WHEEL_STOP_US;
 bool wheelsActive = false;
+unsigned long lastI2cAutoEnableAt = 0;
 
 void handleCommand(String command, const char *source);
 bool isIgnoredK10Message(const String &command);
+void autoEnableDetectedI2cSensors();
 
 void setup() {
   Serial.begin(BAUD_CONSOLE);
@@ -101,6 +105,7 @@ void setup() {
   setupGy33ColorSensor();
   setupAht20Bmp280Sensor();
   setupKeypadMenu();
+  setupI2cBusWatchdog();
   setupEyes();
   quietAllServoPins();
 
@@ -120,6 +125,7 @@ void setup() {
   Serial.println("  EYES_ALL_ON, EYES_CLEAR, EYES_SCAN");
   Serial.println("  GY33_SCAN, GY33_DEBUG, GY33_READ, GY33_LED_ON, GY33_LED_OFF, GY33_ON, GY33_OFF");
   Serial.println("  ENV_SCAN, ENV_READ, ENV_ON, ENV_OFF");
+  Serial.println("  I2C_SCAN");
   Serial.println("  KEYS-ADKEY em A3: UP/DOWN escolhe, SELECT executa");
   Serial.println();
   Serial.println("Tambem podes escrever um comando nesta consola para testar.");
@@ -148,6 +154,8 @@ void loop() {
   printAht20Bmp280ReadingToSerial();
   printAht20Bmp280TelemetryToStream(Serial1);
   clearAht20Bmp280ReadingUpdated();
+  updateI2cBusWatchdog(Serial1);
+  autoEnableDetectedI2cSensors();
   updateLcdTelemetry(getAht20TemperatureC(), getAht20Humidity(), isAht20Bmp280ReadingOk());
   updateKeypadMenu(handleCommand);
   updateEyes();
@@ -289,6 +297,7 @@ bool isKnownCommand(const String &command) {
          command == "GY33_LED_OFF" ||
          command == "GY33_ON" ||
          command == "GY33_OFF" ||
+         command == "I2C_SCAN" ||
          command == "ENV_SCAN" ||
          command == "ENV_READ" ||
          command == "ENV_ON" ||
@@ -393,6 +402,8 @@ void applyCommand(const String &command) {
     enableGy33ColorSensor(true);
   } else if (command == "GY33_OFF") {
     enableGy33ColorSensor(false);
+  } else if (command == "I2C_SCAN") {
+    scanI2cBusWatchdogNow(Serial1, true);
   } else if (command == "ENV_SCAN" || command == "AHT20_BMP280_SCAN") {
     scanAht20Bmp280I2cBus();
   } else if (command == "ENV_READ" || command == "AHT20_BMP280_READ") {
@@ -526,4 +537,21 @@ void centerBody() {
   moveBodyServo(headServo, HEAD_SERVO_PIN, HEAD_CENTER_ANGLE);
   moveBodyServo(leftArmServo, LEFT_ARM_SERVO_PIN, LEFT_ARM_CENTER_ANGLE);
   moveBodyServo(rightArmServo, RIGHT_ARM_SERVO_PIN, RIGHT_ARM_CENTER_ANGLE);
+}
+
+void autoEnableDetectedI2cSensors() {
+  unsigned long now = millis();
+  if (now - lastI2cAutoEnableAt < I2C_AUTO_ENABLE_RETRY_MS) {
+    return;
+  }
+
+  lastI2cAutoEnableAt = now;
+
+  if (i2cBusHasGy33() && !isGy33ColorSensorEnabled()) {
+    enableGy33ColorSensor(true);
+  }
+
+  if (i2cBusHasEnvironmentSensor() && !isAht20Bmp280SensorEnabled()) {
+    enableAht20Bmp280Sensor(true);
+  }
 }

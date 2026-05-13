@@ -400,6 +400,60 @@ button {
   color: #18202a;
 }
 
+.sensor-config .secondary {
+  background: #475569;
+}
+
+.i2c-device-list {
+  display: grid;
+  gap: 6px;
+  max-height: 118px;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid #d9e0ea;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.i2c-device,
+.i2c-empty {
+  min-height: 30px;
+  border-radius: 6px;
+}
+
+.i2c-device {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.i2c-device strong,
+.i2c-device span,
+.i2c-empty {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.i2c-device strong {
+  color: #1f6feb;
+}
+
+.i2c-device span,
+.i2c-empty {
+  color: #647084;
+}
+
+.i2c-empty {
+  display: grid;
+  align-items: center;
+  padding: 5px 8px;
+}
+
 .color-reader {
   width: min(420px, 100%);
   justify-items: stretch;

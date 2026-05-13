@@ -118,23 +118,11 @@
             </div>
 
             <div class="sensor-config">
-              <span>Sensores I2C externos</span>
-              <label>
-                Braco esquerdo (I2C)
-                <select id="left-arm-sensor">
-                  <option value="none" selected>Nada</option>
-                  <option value="aht20-bmp280">AHT20 + BMP280</option>
-                  <option value="gy33">GY-33 cor</option>
-                </select>
-              </label>
-              <label>
-                Braco direito (I2C)
-                <select id="right-arm-sensor">
-                  <option value="none" selected>Nada</option>
-                  <option value="aht20-bmp280">AHT20 + BMP280</option>
-                  <option value="gy33">GY-33 cor</option>
-                </select>
-              </label>
+              <span>Bus I2C</span>
+              <div class="i2c-device-list" id="i2c-devices">
+                <div class="i2c-empty">A espera do scan I2C</div>
+              </div>
+              <button type="button" class="secondary" data-command="I2C_SCAN">Atualizar I2C</button>
             </div>
 
             <div class="color-reader">
@@ -142,6 +130,8 @@
               <div class="color-actions">
                 <button type="button" id="read-color">Ler cor</button>
                 <button type="button" class="secondary" id="debug-color">Debug I2C</button>
+                <button type="button" data-command="GY33_LED_ON">LED forte</button>
+                <button type="button" class="secondary" data-command="GY33_LED_OFF">LED minimo</button>
                 <button type="button" data-command="ENV_READ">Ler ambiente</button>
                 <button type="button" class="secondary" data-command="ENV_SCAN">Scan I2C</button>
               </div>
@@ -178,8 +168,11 @@
               <option value="EYES_RESET">EYES_RESET</option>
               <option value="LCD_ON">LCD_ON</option>
               <option value="LCD_OFF">LCD_OFF</option>
+              <option value="I2C_SCAN">I2C_SCAN</option>
               <option value="GY33_READ">GY33_READ</option>
               <option value="GY33_DEBUG">GY33_DEBUG</option>
+              <option value="GY33_LED_ON">GY33_LED_ON</option>
+              <option value="GY33_LED_OFF">GY33_LED_OFF</option>
               <option value="GY33_ON">GY33_ON</option>
               <option value="GY33_OFF">GY33_OFF</option>
               <option value="ENV_READ">ENV_READ</option>

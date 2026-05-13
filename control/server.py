@@ -30,6 +30,7 @@ DHT_VALUE_RE = re.compile(r"^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)(?:\s*,
 ENV_VALUE_RE = re.compile(r"^\s*(-?\d+(?:\.\d+)?)?\s*,\s*(-?\d+(?:\.\d+)?)?\s*,\s*(-?\d+(?:\.\d+)?)?\s*,\s*(-?\d+(?:\.\d+)?)?\s*,?\s*([0-9a-fA-F]+)?\s*$")
 GY33_RGB8_RE = re.compile(r"RGB8\s*=\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)", re.IGNORECASE)
 GY33_RGB_VALUE_RE = re.compile(r"^\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*$")
+I2C_DEVICE_RE = re.compile(r"^\s*([0-9a-fA-F]{1,2})\s*:\s*([^|]+)\s*$")
 
 
 def now_ms() -> int:
@@ -57,6 +58,8 @@ def default_state() -> dict:
         "gas": None,
         "color": None,
         "colorUpdatedAt": None,
+        "i2cDevices": [],
+        "i2cUpdatedAt": None,
         "ip": None,
         "message": "A espera de dados do K10",
         "camera": None,
@@ -111,6 +114,35 @@ def parse_number(value):
         return float(value)
     except (TypeError, ValueError):
         return value
+
+
+def parse_i2c_devices(value) -> list[dict]:
+    if not isinstance(value, str):
+        return []
+
+    text = value.strip()
+    if not text or text.lower() == "none":
+        return []
+
+    devices = []
+    seen = set()
+    for item in re.split(r"[|,]", text):
+        match = I2C_DEVICE_RE.match(item)
+        if not match:
+            continue
+
+        address = match.group(1).upper().zfill(2)
+        if address in seen:
+            continue
+
+        seen.add(address)
+        name = match.group(2).strip() or "UNKNOWN"
+        devices.append({
+            "address": f"0x{address}",
+            "name": name,
+        })
+
+    return devices
 
 
 def is_fresh_dht(updated_at: int) -> bool:
@@ -238,6 +270,10 @@ def is_environment_telemetry_payload(payload: dict) -> bool:
         key in payload
         for key in ("env", "ahtTemperature", "ahtHumidity", "bmpTemperature", "pressure", "bmpAddress")
     )
+
+
+def is_i2c_telemetry_payload(payload: dict) -> bool:
+    return "i2c" in payload or "i2cDevices" in payload
 
 
 class ControlHandler(BaseHTTPRequestHandler):
@@ -453,6 +489,12 @@ class ControlHandler(BaseHTTPRequestHandler):
 
             STATE["envUpdatedAt"] = updated_at
 
+        if is_i2c_telemetry_payload(payload):
+            devices = parse_i2c_devices(payload.get("i2c") or payload.get("i2cDevices"))
+            STATE["i2cDevices"] = devices
+            STATE["i2cUpdatedAt"] = updated_at
+            changed["i2cDevices"] = devices
+
         if "device" in payload:
             STATE["device"] = payload["device"]
             changed["device"] = payload["device"]
@@ -630,6 +672,8 @@ def clear_telemetry() -> None:
     STATE["gas"] = None
     STATE["color"] = None
     STATE["colorUpdatedAt"] = None
+    STATE["i2cDevices"] = []
+    STATE["i2cUpdatedAt"] = None
     STATE["updatedAt"] = None
     STATE["history"] = [entry for entry in STATE.get("history", []) if entry.get("type") != "telemetry"]
 

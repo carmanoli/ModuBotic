@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "gy33_color_sensor.h"
+#include "i2c_bus_watchdog.h"
 
 const byte TCS34725_ADDRESS = 0x29;
 const byte GY33_CONTROLLER_ADDRESS = 0x5A;
@@ -276,6 +277,12 @@ void printGy33TelemetryToStream(Stream &stream) {
   stream.print(lastGreen8);
   stream.print(",");
   stream.print(lastBlue8);
+
+  const char *i2cSignature = getI2cBusSignature();
+  if (i2cSignature != NULL && i2cSignature[0] != '\0') {
+    stream.print("&i2c=");
+    stream.print(i2cSignature);
+  }
 }
 
 void clearGy33ReadingUpdated() {

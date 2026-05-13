@@ -92,6 +92,16 @@ a ser do AHT20. A temperatura interna do K10 continua a ser guardada
 separadamente e deixa de sobrescrever o grafico enquanto o sensor I2C estiver
 fresco.
 
+O watchdog I2C tambem envia uma lista generica quando o barramento muda:
+
+```text
+i2c=27:LCD_I2C,38:AHT20_AHT21,5A:GY33_CONTROLLER
+```
+
+No K10, reencaminha esta linha pelo mesmo endpoint `/api/telemetry-only`. O
+painel mostra qualquer endereco detetado; para enderecos desconhecidos usa
+`UNKNOWN` em vez de assumir que e um dos sensores ja suportados.
+
 ## Enviar imagem
 
 O painel aceita imagem em base64/JPEG no campo `image`:
@@ -161,7 +171,7 @@ No ciclo `forever`, separa comandos e telemetria:
    mesmo quando nao existe sensor I2C ligado ao Arduino.
 
 3. Se a serial1 tiver texto vindo do Arduino, juntar os bytes numa string.
-   Se a string tiver "env=" ou "rgb=", enviar:
+   Se a string tiver "env=", "rgb=" ou "i2c=", enviar:
    POST http://10.0.0.100:8080/api/telemetry-only?<serial>
 ```
 
