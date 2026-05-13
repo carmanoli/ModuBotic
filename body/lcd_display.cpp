@@ -9,6 +9,7 @@ const byte LCD_ADDRESS_SECONDARY = 0x3F;
 const byte LCD_COLUMNS = 16;
 const byte LCD_ROWS = 2;
 const unsigned long LCD_REFRESH_MS = 1000;
+const unsigned long LCD_MESSAGE_HOLD_MS = 12000;
 
 LiquidCrystal_I2C lcd27(LCD_ADDRESS_PRIMARY, LCD_COLUMNS, LCD_ROWS);
 LiquidCrystal_I2C lcd3f(LCD_ADDRESS_SECONDARY, LCD_COLUMNS, LCD_ROWS);
@@ -20,10 +21,12 @@ bool lcdInitialized = false;
 bool i2cStarted = false;
 byte activeLcdAddress = 0x00;
 unsigned long lastLcdRefreshAt = 0;
+unsigned long lcdTelemetryPausedUntil = 0;
 
 bool i2cAddressResponds(byte address);
 bool detectLcd();
 void startI2cIfNeeded();
+void printLcdLine(byte row, const char *text);
 
 void setupLcd() {
   // Intentionally empty: LCD must not touch I2C during boot.
@@ -40,6 +43,10 @@ void updateLcdTelemetry(float temperatureC, float humidity, bool readingOk) {
   }
 
   unsigned long now = millis();
+  if (lcdTelemetryPausedUntil != 0 && (long)(now - lcdTelemetryPausedUntil) < 0) {
+    return;
+  }
+
   if (now - lastLcdRefreshAt < LCD_REFRESH_MS) {
     return;
   }
@@ -79,7 +86,7 @@ void enableLcd(bool enabled) {
   lcdEnabled = enabled;
 
   if (lcdEnabled) {
-    lcd->backlight();
+    setLcdBacklightFull();
     lcd->clear();
     lcd->setCursor(0, 0);
     lcd->print("ModuBotica");
@@ -90,6 +97,57 @@ void enableLcd(bool enabled) {
     lcd->clear();
     lcd->noBacklight();
   }
+}
+
+void setLcdBacklightFull() {
+  startI2cIfNeeded();
+
+  if (!detectLcd()) {
+    lcdEnabled = false;
+    return;
+  }
+
+  if (!lcdInitialized) {
+    lcd->init();
+    lcdInitialized = true;
+  }
+
+  lcdEnabled = true;
+  lcd->backlight();
+}
+
+void setLcdBacklightDim() {
+  startI2cIfNeeded();
+
+  if (!detectLcd()) {
+    lcdEnabled = false;
+    return;
+  }
+
+  if (!lcdInitialized) {
+    lcd->init();
+    lcdInitialized = true;
+  }
+
+  lcdEnabled = true;
+  // Common I2C LCD backpacks only expose backlight on/off.
+  // Keep this state separate so a PWM backlight pin can be added here later.
+  lcd->backlight();
+}
+
+void sleepLcdDisplay() {
+  enableLcd(false);
+}
+
+void showLcdMessage(const char *line1, const char *line2) {
+  setLcdBacklightFull();
+  if (!lcdEnabled || !lcdAvailable || !lcdInitialized) {
+    return;
+  }
+
+  printLcdLine(0, line1);
+  printLcdLine(1, line2);
+  lcdTelemetryPausedUntil = millis() + LCD_MESSAGE_HOLD_MS;
 }
 
 bool isLcdEnabled() {
@@ -139,4 +197,19 @@ bool detectLcd() {
 bool i2cAddressResponds(byte address) {
   Wire.beginTransmission(address);
   return Wire.endTransmission() == 0;
+}
+
+void printLcdLine(byte row, const char *text) {
+  lcd->setCursor(0, row);
+  int printed = 0;
+
+  while (text != NULL && text[printed] != '\0' && printed < LCD_COLUMNS) {
+    lcd->print(text[printed]);
+    printed++;
+  }
+
+  while (printed < LCD_COLUMNS) {
+    lcd->print(' ');
+    printed++;
+  }
 }

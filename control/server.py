@@ -145,7 +145,7 @@ def normalize_telemetry_payload(payload: dict) -> dict:
         if text.startswith("COLOR "):
             text = text.removeprefix("COLOR ").strip()
 
-        query_text = text.replace("\r", "&").replace("\n", "&").strip("&")
+        query_text = text.replace("\r", "&").replace("\n", "&").strip("&?")
 
         if "=" in query_text:
             parsed = {field.strip(): values[-1] for field, values in parse_qs(query_text).items()}

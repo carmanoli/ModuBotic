@@ -9,18 +9,32 @@ const byte TCS34725_COMMAND_BIT = 0x80;
 const byte TCS34725_COMMAND_AUTO_INCREMENT = 0x20;
 const byte TCS34725_ENABLE = 0x00;
 const byte TCS34725_ATIME = 0x01;
+const byte TCS34725_AILTL = 0x04;
+const byte TCS34725_AILTH = 0x05;
+const byte TCS34725_PERS = 0x0C;
 const byte TCS34725_CONTROL = 0x0F;
 const byte TCS34725_ID = 0x12;
 const byte TCS34725_STATUS = 0x13;
 const byte TCS34725_CDATAL = 0x14;
 const byte TCS34725_ENABLE_PON = 0x01;
 const byte TCS34725_ENABLE_AEN = 0x02;
+const byte TCS34725_ENABLE_AIEN = 0x10;
 const byte TCS34725_STATUS_AVALID = 0x01;
 const unsigned long GY33_READ_INTERVAL_MS = 1000;
+const unsigned long GY33_TELEMETRY_INTERVAL_MS = 3000;
 const unsigned long GY33_RETRY_INTERVAL_MS = 1000;
 const unsigned long GY33_I2C_CLOCK_HZ = 50000;
+const byte GY33_LED_INT_PIN = 13;
 const int I2C_SUSPICIOUS_DEVICE_COUNT = 20;
 const char *GY33_ERROR_NONE = "sem erro";
+
+#if __has_include(<Adafruit_TCS34725.h>)
+#include <Adafruit_TCS34725.h>
+#define GY33_USE_ADAFRUIT_TCS34725 1
+Adafruit_TCS34725 gy33Tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
+#else
+#define GY33_USE_ADAFRUIT_TCS34725 0
+#endif
 
 bool gy33Enabled = false;
 bool gy33Available = false;
@@ -28,11 +42,13 @@ bool gy33DirectTcsMode = false;
 bool gy33ControllerMode = false;
 bool gy33Initialized = false;
 bool gy33I2cStarted = false;
+bool gy33AdafruitInitialized = false;
 bool gy33ReadingUpdated = false;
 bool gy33ReadingOk = false;
 bool gy33ReadingRequested = false;
 bool gy33ContinuousMode = false;
 unsigned long lastGy33ReadAt = 0;
+unsigned long lastGy33TelemetryAt = 0;
 unsigned long lastGy33AttemptAt = 0;
 uint16_t lastClear = 0;
 uint16_t lastRed = 0;
@@ -56,6 +72,8 @@ bool detectGy33();
 bool detectTcs34725Direct();
 bool detectGy33Controller();
 bool initTcs34725();
+void setGy33IntPinLed(bool enabled);
+void setTcs34725InterruptLed(bool enabled);
 void writeTcs34725Register(byte reg, byte value);
 byte readTcs34725Register(byte reg);
 bool readTcs34725RegisterByte(byte reg, byte *value);
@@ -74,6 +92,7 @@ void resetGy33ReadingState();
 
 void setupGy33ColorSensor() {
   // Sensor stays off until GY33_ON or GY33_SCAN is requested.
+  setGy33IntPinLed(false);
 }
 
 void updateGy33ColorSensor() {
@@ -127,6 +146,25 @@ void updateGy33ColorSensor() {
     gy33ReadingUpdated = true;
     return;
   }
+
+#if GY33_USE_ADAFRUIT_TCS34725
+  if (gy33AdafruitInitialized) {
+    gy33Tcs.getRawData(&lastRed, &lastGreen, &lastBlue, &lastClear);
+    lastLux = gy33Tcs.calculateLux(lastRed, lastGreen, lastBlue);
+    lastColorTemperature = gy33Tcs.calculateColorTemperature(lastRed, lastGreen, lastBlue);
+    lastRed8 = scaleRawColorToByte(lastRed, lastClear);
+    lastGreen8 = scaleRawColorToByte(lastGreen, lastClear);
+    lastBlue8 = scaleRawColorToByte(lastBlue, lastClear);
+    gy33ReadingOk = true;
+    setGy33Error(GY33_ERROR_NONE);
+    gy33ReadingUpdated = true;
+
+    if (!gy33ContinuousMode) {
+      gy33Enabled = false;
+    }
+    return;
+  }
+#endif
 
   byte status = 0;
   if (!readTcs34725RegisterByte(TCS34725_STATUS, &status)) {
@@ -225,6 +263,13 @@ void printGy33TelemetryToStream(Stream &stream) {
     return;
   }
 
+  unsigned long now = millis();
+  if (now - lastGy33TelemetryAt < GY33_TELEMETRY_INTERVAL_MS) {
+    return;
+  }
+
+  lastGy33TelemetryAt = now;
+
   stream.print("rgb=");
   stream.print(lastRed8);
   stream.print(",");
@@ -317,15 +362,28 @@ void setGy33LedPower(byte power) {
     power = 10;
   }
 
+  setGy33IntPinLed(power > 0);
+
+  if (detectTcs34725Direct()) {
+    setTcs34725InterruptLed(power > 0);
+    Serial.print("GY-33 LED: ");
+    Serial.println(power > 0 ? "ON por D13/INT + TCS34725 direto 0x29" : "OFF por D13/INT + TCS34725 direto 0x29");
+    return;
+  }
+
   if (!detectGy33Controller()) {
-    Serial.println("GY-33 LED: nao disponivel em modo TCS34725 direto 0x29; usa DR/CT + SO=GND e deixa S1 solto para modo controlador 0x5A");
+    Serial.println("GY-33 LED: modulo nao encontrado em 0x29 nem 0x5A");
     return;
   }
 
   byte config = 0xA0 - (power * 16);
   if (writeGy33ControllerByte(GY33_CONTROLLER_CONFIG, config)) {
-    Serial.print("GY-33 LED: potencia ");
-    Serial.println(power);
+    Serial.print("GY-33 LED: brilho ");
+    Serial.print(power);
+    if (power == 0) {
+      Serial.print(" (minimo)");
+    }
+    Serial.println();
   } else {
     Serial.println("GY-33 LED: falha ao escrever configuracao");
   }
@@ -337,6 +395,10 @@ void enableGy33ColorSensor(bool enabled) {
   gy33ContinuousMode = enabled;
 
   if (!gy33Enabled) {
+    if (gy33DirectTcsMode) {
+      setTcs34725InterruptLed(false);
+    }
+    setGy33IntPinLed(false);
     Serial.println("GY-33: desligado");
     return;
   }
@@ -441,6 +503,19 @@ bool detectGy33Controller() {
 }
 
 bool initTcs34725() {
+#if GY33_USE_ADAFRUIT_TCS34725
+  if (!gy33Tcs.begin()) {
+    gy33AdafruitInitialized = false;
+    setGy33Error("Adafruit_TCS34725 nao inicializou");
+    return false;
+  }
+
+  gy33AdafruitInitialized = true;
+  setGy33IntPinLed(true);
+  setTcs34725InterruptLed(true);
+  delay(60);
+  return true;
+#else
   byte id = 0;
   if (!readTcs34725RegisterByte(TCS34725_ID, &id) || (id != 0x44 && id != 0x4D)) {
     setGy33Error("ID TCS34725 inesperado");
@@ -453,9 +528,54 @@ bool initTcs34725() {
   writeTcs34725Register(TCS34725_CONTROL, 0x01);
   writeTcs34725Register(TCS34725_ENABLE, TCS34725_ENABLE_PON);
   delay(3);
-  writeTcs34725Register(TCS34725_ENABLE, TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN);
+  setGy33IntPinLed(true);
+  setTcs34725InterruptLed(true);
   delay(60);
   return true;
+#endif
+}
+
+void setGy33IntPinLed(bool enabled) {
+  if (enabled) {
+    digitalWrite(GY33_LED_INT_PIN, LOW);
+    pinMode(GY33_LED_INT_PIN, OUTPUT);
+    return;
+  }
+
+  pinMode(GY33_LED_INT_PIN, INPUT);
+}
+
+void setTcs34725InterruptLed(bool enabled) {
+#if GY33_USE_ADAFRUIT_TCS34725
+  if (!gy33AdafruitInitialized) {
+    gy33AdafruitInitialized = gy33Tcs.begin();
+  }
+
+  if (gy33AdafruitInitialized) {
+    if (enabled) {
+      gy33Tcs.setIntLimits(0xFFFF, 0x0000);
+      gy33Tcs.clearInterrupt();
+      gy33Tcs.setInterrupt(false);
+    } else {
+      gy33Tcs.setInterrupt(true);
+    }
+    return;
+  }
+#endif
+
+  if (enabled) {
+    // Some GY-33 boards wire the TCS34725 INT output to the onboard LED driver.
+    // Force a low-threshold interrupt so INT asserts while RGBC readings run.
+    writeTcs34725Register(TCS34725_ENABLE, TCS34725_ENABLE_PON);
+    delay(3);
+    writeTcs34725Register(TCS34725_AILTL, 0xFF);
+    writeTcs34725Register(TCS34725_AILTH, 0xFF);
+    writeTcs34725Register(TCS34725_PERS, 0x00);
+    writeTcs34725Register(TCS34725_ENABLE, TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN | TCS34725_ENABLE_AIEN);
+    return;
+  }
+
+  writeTcs34725Register(TCS34725_ENABLE, TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN);
 }
 
 void writeTcs34725Register(byte reg, byte value) {
@@ -653,11 +773,13 @@ byte scaleRawColorToByte(uint16_t value, uint16_t clear) {
 
 void resetGy33ReadingState() {
   gy33Initialized = false;
+  gy33AdafruitInitialized = false;
   gy33ReadingUpdated = false;
   gy33ReadingOk = false;
   gy33ReadingRequested = false;
   gy33ContinuousMode = false;
   lastGy33ReadAt = 0;
+  lastGy33TelemetryAt = 0;
   lastGy33AttemptAt = 0;
   lastClear = 0;
   lastRed = 0;

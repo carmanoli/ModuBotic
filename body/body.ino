@@ -28,6 +28,9 @@
     AHT20/BMP280 SCL -> UNO R4 SCL
     AHT20/BMP280 VCC -> 3.3V or 5V according to module
     AHT20/BMP280 GND -> GND
+    KEYS-ADKEY S/OUT   -> UNO R4 A3
+    KEYS-ADKEY VCC     -> 5V
+    KEYS-ADKEY GND     -> GND
     Left arm servo       -> UNO R4 D12
     External arm sensors -> UNO R4 SDA/SCL I2C bus
 
@@ -41,6 +44,7 @@
 #include "lcd_display.h"
 #include "gy33_color_sensor.h"
 #include "aht20_bmp280_sensor.h"
+#include "keypad_menu.h"
 
 const unsigned long BAUD_CONSOLE = 115200;
 const unsigned long BAUD_LINK = 9600;
@@ -84,6 +88,7 @@ int activeLeftWheelUs = LEFT_WHEEL_STOP_US;
 int activeRightWheelUs = RIGHT_WHEEL_STOP_US;
 bool wheelsActive = false;
 
+void handleCommand(String command, const char *source);
 bool isIgnoredK10Message(const String &command);
 
 void setup() {
@@ -95,6 +100,7 @@ void setup() {
   detachWheelServos();
   setupGy33ColorSensor();
   setupAht20Bmp280Sensor();
+  setupKeypadMenu();
   setupEyes();
   quietAllServoPins();
 
@@ -114,6 +120,7 @@ void setup() {
   Serial.println("  EYES_ALL_ON, EYES_CLEAR, EYES_SCAN");
   Serial.println("  GY33_SCAN, GY33_DEBUG, GY33_READ, GY33_LED_ON, GY33_LED_OFF, GY33_ON, GY33_OFF");
   Serial.println("  ENV_SCAN, ENV_READ, ENV_ON, ENV_OFF");
+  Serial.println("  KEYS-ADKEY em A3: UP/DOWN escolhe, SELECT executa");
   Serial.println();
   Serial.println("Tambem podes escrever um comando nesta consola para testar.");
   Serial.print("LCD I2C: ");
@@ -142,6 +149,7 @@ void loop() {
   printAht20Bmp280TelemetryToStream(Serial1);
   clearAht20Bmp280ReadingUpdated();
   updateLcdTelemetry(getAht20TemperatureC(), getAht20Humidity(), isAht20Bmp280ReadingOk());
+  updateKeypadMenu(handleCommand);
   updateEyes();
   detachIdleServos();
 }

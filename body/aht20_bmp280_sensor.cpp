@@ -89,10 +89,10 @@ void updateAht20Bmp280Sensor() {
     if (!detectAht20Bmp280()) {
       envReadingOk = false;
       envReadingUpdated = true;
-      if (!envContinuousMode) {
-        envEnabled = false;
-        envReadingRequested = false;
-      }
+      envEnabled = false;
+      envContinuousMode = false;
+      envReadingRequested = false;
+      Serial.println("AHT20/BMP280: ausente, leitura continua desligada");
       return;
     }
 
@@ -102,10 +102,10 @@ void updateAht20Bmp280Sensor() {
     if (!envInitialized) {
       envReadingOk = false;
       envReadingUpdated = true;
-      if (!envContinuousMode) {
-        envEnabled = false;
-        envReadingRequested = false;
-      }
+      envEnabled = false;
+      envContinuousMode = false;
+      envReadingRequested = false;
+      Serial.println("AHT20/BMP280: inicializacao falhou, leitura continua desligada");
       return;
     }
   }
