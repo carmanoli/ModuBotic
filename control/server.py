@@ -19,7 +19,7 @@ HOST = "0.0.0.0"
 PORT = 8080
 DHT_FRESH_MS = 15000
 ENV_FRESH_MS = 15000
-COMMAND_TTL_MS = 60000
+COMMAND_TTL_MS = 300000
 COMMAND_QUEUE_LIMIT = 10
 DHT_READING_RE = re.compile(r"T\s*=\s*(-?\d+(?:\.\d+)?)\s*C\s+H\s*=\s*(-?\d+(?:\.\d+)?)")
 DHT_QUERY_RE = re.compile(r"temperature\s*=\s*(-?\d+(?:\.\d+)?).*?humidity\s*=\s*(-?\d+(?:\.\d+)?)", re.IGNORECASE | re.DOTALL)
@@ -31,6 +31,27 @@ ENV_VALUE_RE = re.compile(r"^\s*(-?\d+(?:\.\d+)?)?\s*,\s*(-?\d+(?:\.\d+)?)?\s*,\
 GY33_RGB8_RE = re.compile(r"RGB8\s*=\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)", re.IGNORECASE)
 GY33_RGB_VALUE_RE = re.compile(r"^\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*$")
 I2C_DEVICE_RE = re.compile(r"^\s*([0-9a-fA-F]{1,2})\s*:\s*([^|]+)\s*$")
+URGENT_COMMANDS = {"STOP"}
+INTERACTIVE_COMMANDS = {
+    "HEAD_LEFT",
+    "HEAD_CENTER",
+    "HEAD_RIGHT",
+    "ARM_LEFT_UP",
+    "ARM_LEFT_CENTER",
+    "ARM_LEFT_DOWN",
+    "ARM_RIGHT_UP",
+    "ARM_RIGHT_CENTER",
+    "ARM_RIGHT_DOWN",
+    "MOVE_FORWARD",
+    "MOVE_BACK",
+    "TURN_LEFT",
+    "TURN_RIGHT",
+    "LEFT_WHEEL_FORWARD",
+    "LEFT_WHEEL_BACK",
+    "RIGHT_WHEEL_FORWARD",
+    "RIGHT_WHEEL_BACK",
+    "WHEELS_TEST",
+}
 
 
 def now_ms() -> int:
@@ -353,23 +374,7 @@ class ControlHandler(BaseHTTPRequestHandler):
             self.send_json({"ok": True})
             return
 
-        if parsed.path == "/api/telemetry":
-            payload = normalize_telemetry_payload(self.read_payload())
-            self.update_telemetry(payload)
-            STATE["telemetryRequestCount"] = int(STATE.get("telemetryRequestCount") or 0) + 1
-            command = pop_command()
-            response = command or "NONE"
-            STATE["lastTelemetryRequest"] = {
-                "at": now_ms(),
-                "client": self.client_address[0],
-                "payload": payload,
-                "response": response,
-            }
-            save_state()
-            self.send_text(response)
-            return
-
-        if parsed.path in {"/api/telemetry-only", "/api/telemetry_only"}:
+        if parsed.path in {"/api/telemetry", "/api/telemetry-only", "/api/telemetry_only"}:
             payload = normalize_telemetry_payload(self.read_payload())
             if any(key in payload for key in ("humidity", "hum")):
                 payload.setdefault("source", "dht22")
@@ -709,15 +714,33 @@ def normalize_command_queue() -> None:
     STATE["pendingCommand"] = STATE["commands"][0] if STATE["commands"] else None
 
 
+def normalized_command_name(command: str) -> str:
+    return str(command or "").strip().upper()
+
+
 def queue_command(command: str) -> None:
     timestamp = now_ms()
-    pending = {"command": command, "at": timestamp}
+    normalized_command = normalized_command_name(command)
+    pending = {"command": normalized_command, "at": timestamp}
     normalize_command_queue()
-    STATE["commands"].append(pending)
+
+    STATE["commands"] = [
+        entry for entry in STATE["commands"]
+        if command_entry_value(entry).upper() != normalized_command
+    ]
+
+    if normalized_command in URGENT_COMMANDS:
+        STATE["commands"].clear()
+        STATE["commands"].insert(0, pending)
+    elif normalized_command in INTERACTIVE_COMMANDS:
+        STATE["commands"].insert(0, pending)
+    else:
+        STATE["commands"].append(pending)
+
     STATE["commands"] = STATE["commands"][-COMMAND_QUEUE_LIMIT:]
     STATE["pendingCommand"] = STATE["commands"][0]
     STATE["lastCommand"] = pending
-    push_history({"type": "command", "at": timestamp, "command": command})
+    push_history({"type": "command", "at": timestamp, "command": normalized_command})
 
 
 def pop_command() -> str | None:

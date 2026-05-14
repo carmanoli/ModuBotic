@@ -25,7 +25,7 @@ http://192.168.1.20:8080
 Endpoint:
 
 ```text
-POST /api/telemetry-only
+POST /api/telemetry
 ```
 
 JSON:
@@ -50,13 +50,13 @@ temperature=24.5&humidity=56&ip=192.168.1.50&message=ok
 Com os blocos HTTP do Mind+, tambem podes enviar valores pela query string:
 
 ```text
-POST http://10.0.0.100:8080/api/telemetry-only?temperature=24.5&light=120
+POST http://10.0.0.100:8080/api/telemetry?temperature=24.5&light=120
 ```
 
 Para montar nos blocos:
 
 ```text
-http://10.0.0.100:8080/api/telemetry-only?temperature=<temperatura>&light=<luz>
+http://10.0.0.100:8080/api/telemetry?temperature=<temperatura>&light=<luz>
 ```
 
 Evita fazer um POST separado para cada sensor. Um unico POST com todos os valores
@@ -78,13 +78,13 @@ No K10, le essa linha da porta serial e envia-a para o painel com o endpoint
 que nao consome comandos:
 
 ```text
-POST http://10.0.0.100:8080/api/telemetry-only?env=20.4,55.2,20.8,1013.4,76
+POST http://10.0.0.100:8080/api/telemetry?env=20.4,55.2,20.8,1013.4,76
 ```
 
 Nos blocos, podes montar:
 
 ```text
-url = "http://10.0.0.100:8080/api/telemetry-only?" + serial
+url = "http://10.0.0.100:8080/api/telemetry?" + serial
 ```
 
 Quando o servidor recebe AHT20/BMP280, a temperatura/humidade principais passam
@@ -98,7 +98,7 @@ O watchdog I2C tambem envia uma lista generica quando o barramento muda:
 i2c=27:LCD_I2C,38:AHT20_AHT21,5A:GY33_CONTROLLER
 ```
 
-No K10, reencaminha esta linha pelo mesmo endpoint `/api/telemetry-only`. O
+No K10, reencaminha esta linha pelo mesmo endpoint `/api/telemetry`. O
 painel mostra qualquer endereco detetado; para enderecos desconhecidos usa
 `UNKNOWN` em vez de assumir que e um dos sensores ja suportados.
 
@@ -166,13 +166,13 @@ No ciclo `forever`, separa comandos e telemetria:
    Ler uma linha da resposta.
    Se for diferente de NONE, OK ou ERROR, escrever essa linha na serial1.
 
-2. POST http://10.0.0.100:8080/api/telemetry-only?temperature=<temp_k10>&light=<luz_k10>
+2. POST http://10.0.0.100:8080/api/telemetry?temperature=<temp_k10>&light=<luz_k10>
    Isto fica fora do bloco que le a serial, para continuar a atualizar o K10
    mesmo quando nao existe sensor I2C ligado ao Arduino.
 
 3. Se a serial1 tiver texto vindo do Arduino, juntar os bytes numa string.
    Se a string tiver "env=", "rgb=" ou "i2c=", enviar:
-   POST http://10.0.0.100:8080/api/telemetry-only?<serial>
+   POST http://10.0.0.100:8080/api/telemetry?<serial>
 ```
 
 Assim o segundo POST de telemetria deixa de consumir comandos por engano.
