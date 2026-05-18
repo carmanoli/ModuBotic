@@ -178,7 +178,7 @@ void printAht20Bmp280TelemetryToStream(Stream &stream) {
     return;
   }
 
-  stream.print("&env=");
+  stream.print("env=");
   if (aht20Available) {
     stream.print(lastAht20TemperatureC, 1);
     stream.print(",");
@@ -197,6 +197,7 @@ void printAht20Bmp280TelemetryToStream(Stream &stream) {
   } else {
     stream.print(",,");
   }
+  stream.println();
 }
 
 void clearAht20Bmp280ReadingUpdated() {

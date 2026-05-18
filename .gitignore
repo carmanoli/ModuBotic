@@ -3,3 +3,4 @@ __pycache__/
 control/data/
 mind/_mind_mp_edit/
 mind/*.mp
+mind-cyd/config.h

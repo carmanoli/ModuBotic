@@ -5,6 +5,7 @@
 #include "lcd_display.h"
 #include "gy33_color_sensor.h"
 #include "aht20_bmp280_sensor.h"
+#include "i2c_bus_watchdog.h"
 
 const int KEYPAD_ANALOG_PIN = A3;
 const unsigned long KEYPAD_DEBOUNCE_MS = 80;
@@ -116,6 +117,7 @@ void drawMindScreen();
 void printScreenLine(const char *line1, const char *line2);
 void formatMenuLine(char *buffer, size_t size, const char *prefix, const char *text);
 void formatFloat(char *buffer, size_t size, float value, byte decimals);
+void formatI2cSignature(char *buffer, size_t size);
 const MenuItem *getCurrentItems();
 byte getCurrentItemCount();
 const char *getScreenTitle();
@@ -229,8 +231,12 @@ void enterSelectedItem(KeypadMenuCommandHandler commandHandler) {
   if (activeScreen == SCREEN_SENSOR) {
     if (selectedIndex == 0) {
       executeCommand("Refresh Color", "GY33_READ", commandHandler);
-    } else {
+    } else if (selectedIndex == 1) {
       executeCommand("Refresh Env", "ENV_READ", commandHandler);
+    } else if (selectedIndex == 2) {
+      executeCommand("Refresh Env", "ENV_READ", commandHandler);
+    } else {
+      executeCommand("Scan I2C", "I2C_SCAN", commandHandler);
     }
     return;
   }
@@ -353,10 +359,17 @@ void drawSensorScreen() {
     snprintf(line1, sizeof(line1), "Sensor Env");
     snprintf(line2, sizeof(line2), "T%sC H%s%%", temp, humidity);
   } else {
-    char pressure[8];
-    formatFloat(pressure, sizeof(pressure), getBmp280PressureHpa(), 0);
-    snprintf(line1, sizeof(line1), "Sensor Press");
-    snprintf(line2, sizeof(line2), "%s hPa", pressure);
+    if (selectedIndex == 2) {
+      char pressure[8];
+      formatFloat(pressure, sizeof(pressure), getBmp280PressureHpa(), 0);
+      snprintf(line1, sizeof(line1), "Sensor Press");
+      snprintf(line2, sizeof(line2), "%s hPa", pressure);
+    } else {
+      char signature[17];
+      formatI2cSignature(signature, sizeof(signature));
+      snprintf(line1, sizeof(line1), "I2C Bus");
+      snprintf(line2, sizeof(line2), "%s", signature);
+    }
   }
 
   lastSensorScreenRefreshAt = millis();
@@ -386,6 +399,16 @@ void formatFloat(char *buffer, size_t size, float value, byte decimals) {
   }
 
   dtostrf(value, 0, decimals, buffer);
+}
+
+void formatI2cSignature(char *buffer, size_t size) {
+  const char *signature = getI2cBusSignature();
+  if (signature == NULL || signature[0] == '\0') {
+    snprintf(buffer, size, "SELECT scan");
+    return;
+  }
+
+  snprintf(buffer, size, "%s", signature);
 }
 
 const MenuItem *getCurrentItems() {
@@ -430,7 +453,7 @@ byte getCurrentItemCount() {
     case SCREEN_BODY_RIGHT_WHEEL:
       return sizeof(RIGHT_WHEEL_ITEMS) / sizeof(RIGHT_WHEEL_ITEMS[0]);
     case SCREEN_SENSOR:
-      return 3;
+      return 4;
     default:
       return 0;
   }

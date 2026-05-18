@@ -283,6 +283,7 @@ void printGy33TelemetryToStream(Stream &stream) {
     stream.print("&i2c=");
     stream.print(i2cSignature);
   }
+  stream.println();
 }
 
 void clearGy33ReadingUpdated() {

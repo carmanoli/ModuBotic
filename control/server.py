@@ -3,11 +3,18 @@ from __future__ import annotations
 import base64
 import json
 import mimetypes
+import os
 import re
 import time
+import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
+
+try:
+    import paho.mqtt.client as mqtt
+except ImportError:
+    mqtt = None
 
 
 ROOT = Path(__file__).resolve().parent
@@ -17,6 +24,11 @@ STATE_FILE = DATA / "state.json"
 
 HOST = "0.0.0.0"
 PORT = 8080
+MQTT_ENABLED = os.environ.get("MODUBOTIC_MQTT_ENABLED", "1").lower() not in {"0", "false", "no", "off"}
+MQTT_HOST = os.environ.get("MODUBOTIC_MQTT_HOST", "10.0.0.90")
+MQTT_PORT = int(os.environ.get("MODUBOTIC_MQTT_PORT", "1883"))
+MQTT_BASE_TOPIC = os.environ.get("MODUBOTIC_MQTT_BASE_TOPIC", "modubotic/robot")
+MQTT_ROBOT_ID = os.environ.get("MODUBOTIC_ROBOT_ID", "pink")
 DHT_FRESH_MS = 15000
 ENV_FRESH_MS = 15000
 COMMAND_TTL_MS = 300000
@@ -51,6 +63,7 @@ INTERACTIVE_COMMANDS = {
     "RIGHT_WHEEL_FORWARD",
     "RIGHT_WHEEL_BACK",
     "WHEELS_TEST",
+    "I2C_SCAN",
 }
 
 
@@ -60,7 +73,7 @@ def now_ms() -> int:
 
 def default_state() -> dict:
     return {
-        "device": "UNIHIKER K10",
+        "device": "A espera de mind",
         "temperature": None,
         "humidity": None,
         "k10Temperature": None,
@@ -81,8 +94,11 @@ def default_state() -> dict:
         "colorUpdatedAt": None,
         "i2cDevices": [],
         "i2cUpdatedAt": None,
+        "i2cScanStatus": "idle",
+        "i2cScanRequestedAt": None,
+        "i2cScanCompletedAt": None,
         "ip": None,
-        "message": "A espera de dados do K10",
+        "message": "A espera de dados da mind",
         "camera": None,
         "updatedAt": None,
         "history": [],
@@ -111,16 +127,127 @@ def load_state() -> dict:
 
     base = default_state()
     base.update(state)
+    base["i2cDevices"] = []
+    base["i2cUpdatedAt"] = None
+    base["i2cScanStatus"] = "idle"
+    base["i2cScanRequestedAt"] = None
+    base["i2cScanCompletedAt"] = None
     return base
 
 
 STATE = load_state()
+MQTT_CLIENT = None
+MQTT_CONNECTED = False
+MQTT_LAST_ERROR = "not started"
+MQTT_LAST_MESSAGE = None
+MQTT_LOCK = threading.Lock()
 
 
 def save_state() -> None:
     DATA.mkdir(exist_ok=True)
     with STATE_FILE.open("w", encoding="utf-8") as file:
         json.dump(STATE, file, ensure_ascii=True, indent=2)
+
+
+def mqtt_topic(suffix: str) -> str:
+    return f"{MQTT_BASE_TOPIC}/{MQTT_ROBOT_ID}/{suffix}"
+
+
+def on_mqtt_connect(client, userdata, flags, rc, properties=None) -> None:
+    global MQTT_CONNECTED, MQTT_LAST_ERROR
+    MQTT_CONNECTED = rc == 0
+    if MQTT_CONNECTED:
+        MQTT_LAST_ERROR = ""
+        client.subscribe(mqtt_topic("#"))
+        print(f"MQTT connected to {MQTT_HOST}:{MQTT_PORT} robot={MQTT_ROBOT_ID}")
+    else:
+        MQTT_LAST_ERROR = f"connect rc={rc}"
+        print(f"MQTT connect failed rc={rc}")
+
+
+def on_mqtt_disconnect(client, userdata, rc, properties=None) -> None:
+    global MQTT_CONNECTED, MQTT_LAST_ERROR
+    MQTT_CONNECTED = False
+    MQTT_LAST_ERROR = f"disconnect rc={rc}"
+    print("MQTT disconnected")
+
+
+def on_mqtt_message(client, userdata, message) -> None:
+    global MQTT_LAST_MESSAGE
+    topic = message.topic
+    payload = message.payload.decode("utf-8", errors="replace")
+    timestamp = now_ms()
+    MQTT_LAST_MESSAGE = {"topic": topic, "payload": payload, "at": timestamp}
+
+    prefix = f"{MQTT_BASE_TOPIC}/{MQTT_ROBOT_ID}/"
+    suffix = topic.removeprefix(prefix) if topic.startswith(prefix) else topic
+
+    if suffix == "command":
+        command = normalized_command_name(payload)
+        STATE["lastCommand"] = {"command": command, "at": timestamp, "source": "mqtt"}
+        push_history({"type": "mqtt-command", "at": timestamp, "command": command, "topic": topic})
+    elif suffix == "status":
+        try:
+            status = json.loads(payload)
+        except json.JSONDecodeError:
+            status = {}
+        if isinstance(status, dict):
+            STATE["device"] = status.get("mindType") or STATE.get("device")
+            STATE["ip"] = status.get("ip") or STATE.get("ip")
+            STATE["updatedAt"] = timestamp
+        push_history({"type": "mqtt-status", "at": timestamp, "topic": topic, "payload": payload})
+    else:
+        STATE["message"] = payload
+        STATE["updatedAt"] = timestamp
+        maybe_update_color_from_line(payload, timestamp)
+        maybe_update_i2c_from_line(payload, timestamp)
+        push_history({"type": "mqtt", "at": timestamp, "topic": topic, "payload": payload})
+
+    save_state()
+
+
+def start_mqtt() -> None:
+    global MQTT_CLIENT, MQTT_LAST_ERROR
+    if not MQTT_ENABLED:
+        MQTT_LAST_ERROR = "disabled"
+        print("MQTT disabled")
+        return
+    if mqtt is None:
+        MQTT_LAST_ERROR = "paho-mqtt not installed"
+        print("MQTT unavailable: install paho-mqtt to publish control commands")
+        return
+
+    client = mqtt.Client(client_id=f"modubotic-control-{MQTT_ROBOT_ID}")
+    client.on_connect = on_mqtt_connect
+    client.on_disconnect = on_mqtt_disconnect
+    client.on_message = on_mqtt_message
+    client.connect_async(MQTT_HOST, MQTT_PORT, keepalive=30)
+    client.loop_start()
+    MQTT_CLIENT = client
+    MQTT_LAST_ERROR = "connecting"
+
+
+def mqtt_publish(suffix: str, payload: str, retain: bool = False) -> None:
+    if not MQTT_ENABLED or MQTT_CLIENT is None or not MQTT_CONNECTED:
+        return
+
+    with MQTT_LOCK:
+        MQTT_CLIENT.publish(mqtt_topic(suffix), payload, qos=0, retain=retain)
+
+
+def mqtt_debug() -> dict:
+    return {
+        "enabled": MQTT_ENABLED,
+        "available": mqtt is not None,
+        "connected": MQTT_CONNECTED,
+        "host": MQTT_HOST,
+        "port": MQTT_PORT,
+        "robotId": MQTT_ROBOT_ID,
+        "baseTopic": MQTT_BASE_TOPIC,
+        "commandTopic": mqtt_topic("command"),
+        "lastError": MQTT_LAST_ERROR,
+        "lastMessage": MQTT_LAST_MESSAGE,
+    }
 
 
 def push_history(entry: dict) -> None:
@@ -297,6 +424,48 @@ def is_i2c_telemetry_payload(payload: dict) -> bool:
     return "i2c" in payload or "i2cDevices" in payload
 
 
+def maybe_update_i2c_from_line(line: str, updated_at: int) -> bool:
+    normalized = normalize_telemetry_payload({"body": line})
+    if not is_i2c_telemetry_payload(normalized):
+        return False
+
+    devices = parse_i2c_devices(normalized.get("i2c") or normalized.get("i2cDevices"))
+    STATE["i2cDevices"] = devices
+    STATE["i2cUpdatedAt"] = updated_at
+    STATE["i2cScanStatus"] = "done"
+    STATE["i2cScanCompletedAt"] = updated_at
+    return True
+
+
+def maybe_update_color_from_line(line: str, updated_at: int) -> bool:
+    normalized = normalize_telemetry_payload({"body": line})
+    if not is_gy33_telemetry_payload(normalized):
+        return False
+
+    red = parse_number(normalized.get("r"))
+    green = parse_number(normalized.get("g"))
+    blue = parse_number(normalized.get("b"))
+    if not all(isinstance(value, (int, float)) for value in (red, green, blue)):
+        return False
+
+    color = {
+        "r": int(red),
+        "g": int(green),
+        "b": int(blue),
+        "redRaw": parse_number(normalized.get("red")),
+        "greenRaw": parse_number(normalized.get("green")),
+        "blueRaw": parse_number(normalized.get("blue")),
+        "clear": parse_number(normalized.get("clear")),
+        "lux": parse_number(normalized.get("lux")),
+        "ct": parse_number(normalized.get("ct")),
+    }
+    STATE["color"] = color
+    STATE["colorUpdatedAt"] = updated_at
+    STATE["updatedAt"] = updated_at
+    push_history({"type": "telemetry", "at": updated_at, "values": {"color": color}})
+    return True
+
+
 class ControlHandler(BaseHTTPRequestHandler):
     server_version = "ModuBoticControl/0.1"
 
@@ -368,6 +537,12 @@ class ControlHandler(BaseHTTPRequestHandler):
             self.send_json({"ok": True, "cleared": cleared})
             return
 
+        if parsed.path == "/api/i2c/scan":
+            queue_i2c_scan()
+            save_state()
+            self.send_json({"ok": True, "queued": "I2C_SCAN"})
+            return
+
         if parsed.path == "/api/telemetry/clear":
             clear_telemetry()
             save_state()
@@ -408,6 +583,11 @@ class ControlHandler(BaseHTTPRequestHandler):
             command = str(payload.get("command", "")).strip()
             if not command:
                 self.send_json({"ok": False, "error": "Missing command"}, status=400)
+                return
+            if normalized_command_name(command) == "I2C_SCAN":
+                queue_i2c_scan()
+                save_state()
+                self.send_json({"ok": True, "queued": "I2C_SCAN"})
                 return
             queue_command(command)
             save_state()
@@ -456,7 +636,7 @@ class ControlHandler(BaseHTTPRequestHandler):
 
             if not has_fresh_external_temperature(updated_at):
                 STATE["temperature"] = temperature
-                STATE["temperatureSource"] = "K10"
+                STATE["temperatureSource"] = "Mind"
                 changed["temperature"] = temperature
 
         if is_environment_telemetry_payload(payload):
@@ -498,6 +678,8 @@ class ControlHandler(BaseHTTPRequestHandler):
             devices = parse_i2c_devices(payload.get("i2c") or payload.get("i2cDevices"))
             STATE["i2cDevices"] = devices
             STATE["i2cUpdatedAt"] = updated_at
+            STATE["i2cScanStatus"] = "done"
+            STATE["i2cScanCompletedAt"] = updated_at
             changed["i2cDevices"] = devices
 
         if "device" in payload:
@@ -679,8 +861,29 @@ def clear_telemetry() -> None:
     STATE["colorUpdatedAt"] = None
     STATE["i2cDevices"] = []
     STATE["i2cUpdatedAt"] = None
+    STATE["i2cScanStatus"] = "idle"
+    STATE["i2cScanRequestedAt"] = None
+    STATE["i2cScanCompletedAt"] = None
     STATE["updatedAt"] = None
     STATE["history"] = [entry for entry in STATE.get("history", []) if entry.get("type") != "telemetry"]
+
+
+def clear_i2c_devices(updated_at: int | None = None) -> None:
+    STATE["i2cDevices"] = []
+    STATE["i2cUpdatedAt"] = None
+    STATE["i2cScanCompletedAt"] = None
+    if updated_at is not None:
+        STATE["updatedAt"] = updated_at
+
+
+def queue_i2c_scan() -> None:
+    timestamp = now_ms()
+    clear_i2c_devices(timestamp)
+    STATE["i2cScanStatus"] = "scanning"
+    STATE["i2cScanRequestedAt"] = timestamp
+    STATE["message"] = "Scan I2C pedido; a espera do robot"
+    push_history({"type": "i2c-scan-request", "at": timestamp, "command": "I2C_SCAN"})
+    queue_command("I2C_SCAN")
 
 
 def command_entry_value(entry) -> str:
@@ -741,6 +944,7 @@ def queue_command(command: str) -> None:
     STATE["pendingCommand"] = STATE["commands"][0]
     STATE["lastCommand"] = pending
     push_history({"type": "command", "at": timestamp, "command": normalized_command})
+    mqtt_publish("command", normalized_command)
 
 
 def pop_command() -> str | None:
@@ -785,13 +989,15 @@ def command_debug() -> dict:
         "pollRequestCount": STATE.get("pollRequestCount") or 0,
         "lastTelemetryRequest": STATE.get("lastTelemetryRequest"),
         "telemetryRequestCount": STATE.get("telemetryRequestCount") or 0,
+        "mqtt": mqtt_debug(),
         "motionGetWouldReturn": pending or "NONE",
     }
 
 
 def main() -> None:
     print(f"ModuBotic Control running on http://localhost:{PORT}")
-    print("Use the PC network IP instead of localhost from the K10.")
+    print("Use the PC network IP instead of localhost from network minds.")
+    start_mqtt()
     server = ThreadingHTTPServer((HOST, PORT), ControlHandler)
     server.serve_forever()
 

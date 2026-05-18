@@ -11,14 +11,14 @@
       <header class="topbar">
         <div>
           <h1>ModuBotic Control</h1>
-          <p id="device">UNIHIKER K10</p>
+          <p id="device">A espera de mind</p>
         </div>
         <div class="status" id="status">offline</div>
       </header>
 
       <section class="metrics">
         <article id="metric-k10-temperature">
-          <span>Temp K10</span>
+          <span>Temp mind</span>
           <strong id="temperature">--</strong>
         </article>
         <article id="metric-env-temperature" class="hidden">
@@ -34,11 +34,11 @@
           <strong id="env-pressure">--</strong>
         </article>
         <article id="metric-light">
-          <span>Luz K10</span>
+          <span>Luz mind</span>
           <strong id="light">--</strong>
         </article>
         <article id="metric-ip">
-          <span>IP do K10</span>
+          <span>IP da mind</span>
           <strong id="ip">--</strong>
         </article>
       </section>
@@ -122,7 +122,7 @@
               <div class="i2c-device-list" id="i2c-devices">
                 <div class="i2c-empty">A espera do scan I2C</div>
               </div>
-              <button type="button" class="secondary" data-command="I2C_SCAN">Atualizar I2C</button>
+              <button type="button" class="secondary" id="scan-i2c">Scan I2C</button>
             </div>
 
             <div class="color-reader">
@@ -214,11 +214,13 @@
               <dd id="telemetry-count">0</dd>
               <dt>Ultima tel.</dt>
               <dd id="last-telemetry-hit">--</dd>
+              <dt>MQTT</dt>
+              <dd id="mqtt-status">--</dd>
             </dl>
           </section>
 
           <h2>Ultima mensagem</h2>
-          <p id="message">A espera de dados do K10</p>
+          <p id="message">A espera de dados da mind</p>
 
           <h2>Historico</h2>
           <ol id="history"></ol>

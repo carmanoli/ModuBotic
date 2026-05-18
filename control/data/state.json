@@ -1,25 +1,25 @@
 {
-  "device": "UNIHIKER K10",
-  "temperature": 20.5,
-  "humidity": 86.2,
-  "k10Temperature": 29.99,
+  "device": "cyd",
+  "temperature": 20.6,
+  "humidity": 87.6,
+  "k10Temperature": 29.98,
   "dhtTemperature": null,
   "dhtHumidity": null,
   "dhtPin": null,
   "dhtUpdatedAt": null,
-  "envTemperature": 20.5,
-  "envHumidity": 86.2,
-  "envPressure": 1003.7,
+  "envTemperature": 20.6,
+  "envHumidity": 87.6,
+  "envPressure": 1003.6,
   "envBmpTemperature": 21.3,
   "envBmpAddress": "77",
-  "envUpdatedAt": 1778762220024,
+  "envUpdatedAt": 1778762430765,
   "temperatureSource": "AHT20",
-  "light": 46.0,
+  "light": 40.0,
   "gas": null,
   "color": {
-    "r": 219,
-    "g": 117,
-    "b": 88,
+    "r": 255,
+    "g": 255,
+    "b": 147,
     "redRaw": null,
     "greenRaw": null,
     "blueRaw": null,
@@ -27,7 +27,7 @@
     "lux": null,
     "ct": null
   },
-  "colorUpdatedAt": 1778762217791,
+  "colorUpdatedAt": 1779034248354,
   "i2cDevices": [
     {
       "address": "0x27",
@@ -46,3786 +46,1265 @@
       "name": "BMP_BME280"
     }
   ],
-  "i2cUpdatedAt": 1778762217791,
-  "ip": "0.0.0.0",
-  "message": "A espera de dados do K10",
+  "i2cUpdatedAt": 1779090656238,
+  "i2cScanStatus": "done",
+  "i2cScanRequestedAt": 1779090655842,
+  "i2cScanCompletedAt": 1779090656238,
+  "ip": "10.0.10.161",
+  "message": "PONG",
   "camera": null,
-  "updatedAt": 1778762220024,
+  "updatedAt": 1779090726074,
   "history": [
     {
-      "type": "telemetry",
-      "at": 1778762220024,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762219335,
-      "values": {
-        "k10Temperature": 29.99,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762217791,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762216878,
-      "values": {
-        "k10Temperature": 29.96,
-        "light": 32.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762215333,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762214030,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762212953,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762212267,
-      "values": {
-        "k10Temperature": 29.96,
-        "light": 32.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762210996,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762210139,
-      "values": {
-        "k10Temperature": 29.95,
-        "light": 34.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762207651,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762206783,
-      "values": {
-        "k10Temperature": 29.95,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762205501,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762204272,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762203110,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762202429,
-      "values": {
-        "k10Temperature": 29.93,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762200896,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762199986,
-      "values": {
-        "k10Temperature": 29.93,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762198596,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762196203,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.3,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762195038,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762194254,
-      "values": {
-        "k10Temperature": 29.93,
-        "light": 43.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762192908,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762192019,
-      "values": {
-        "k10Temperature": 29.9,
-        "light": 43.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762190755,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762189871,
-      "values": {
-        "k10Temperature": 29.93,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762187486,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762186796,
-      "values": {
-        "k10Temperature": 29.92,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762185533,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762184304,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762183146,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762182461,
-      "values": {
-        "k10Temperature": 29.91,
-        "light": 43.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762180930,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762179699,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762178854,
-      "values": {
-        "k10Temperature": 29.91,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762177588,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762176474,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762175398,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762174493,
-      "values": {
-        "k10Temperature": 29.91,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762173007,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762172326,
-      "values": {
-        "k10Temperature": 29.9,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762170824,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762169417,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762168333,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762167450,
-      "values": {
-        "k10Temperature": 29.89,
-        "light": 43.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762166154,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762165060,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762164371,
-      "values": {
-        "k10Temperature": 29.88,
-        "light": 41.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762163109,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762162234,
-      "values": {
-        "k10Temperature": 29.89,
-        "light": 41.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762160959,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762159730,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762158499,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.6,
-        "envHumidity": 85.6,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762157271,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762155992,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762155123,
-      "values": {
-        "k10Temperature": 29.87,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762154239,
-      "values": {
-        "k10Temperature": 29.86,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762152973,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762152289,
-      "values": {
-        "k10Temperature": 29.88,
-        "light": 43.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762151437,
-      "values": {
-        "k10Temperature": 29.86,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762150037,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762149349,
-      "values": {
-        "k10Temperature": 29.87,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762148083,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762147009,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762146302,
-      "values": {
-        "k10Temperature": 29.88,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762145056,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762144373,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762142835,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762141997,
-      "values": {
-        "k10Temperature": 29.87,
-        "light": 43.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762140730,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762139621,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762136386,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762135114,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762134433,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762133167,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762132080,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762130698,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762129934,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762128473,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762127782,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762126243,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762125031,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762123492,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762122610,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762121076,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762120048,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762118285,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762117381,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762114989,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762114275,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762112742,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762111492,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762110376,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762109689,
-      "values": {
-        "k10Temperature": 29.86,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762108833,
-      "values": {
-        "k10Temperature": 29.86,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762107576,
-      "values": {
-        "temperature": 20.5,
-        "envTemperature": 20.5,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762106890,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762105361,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762104271,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762103204,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762102492,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762101057,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762100131,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762099259,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762097985,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762097060,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762095796,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762095107,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 46.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762093991,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 59.0,
-        "ip": "0.0.0.0"
-      }
+      "type": "mqtt-status",
+      "at": 1779090726074,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090726027,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090725979,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090720948,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090716085,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090716039,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090715996,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090711086,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090711040,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090710997,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090706117,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090706061,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090705982,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090701059,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090701011,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090700957,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090696053,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090696051,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090695998,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090691112,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090691062,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090690995,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090686084,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090686039,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090685983,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090680989,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090676104,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090676056,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090675983,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090670954,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090666051,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090666045,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090665999,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090660998,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090656290,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED I2C_SCAN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090656238,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "i2c=27:LCD_I2C,38:AHT20_AHT21,5A:GY33_CONTROLLER,77:BMP_BME280"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090656168,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "I2C_SCAN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090656166,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "I2C_SCAN"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090656164,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090656117,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090655997,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090655846,
+      "command": "I2C_SCAN",
+      "topic": "modubotic/robot/pink/command"
     },
     {
       "type": "command",
-      "at": 1778762093226,
+      "at": 1779090655842,
+      "command": "I2C_SCAN"
+    },
+    {
+      "type": "i2c-scan-request",
+      "at": 1779090655842,
+      "command": "I2C_SCAN"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090651091,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090651044,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090650987,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090646052,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090646047,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090646001,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090640952,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090636097,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090636050,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090635996,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090631060,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090631058,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090631003,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090626117,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090626114,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090626062,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090625099,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED HEAD_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090625053,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090625001,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_CENTER"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090624680,
+      "command": "HEAD_CENTER",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090624674,
       "command": "HEAD_CENTER"
     },
     {
-      "type": "telemetry",
-      "at": 1778762092507,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762091416,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762090304,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762089075,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762087908,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762087236,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 59.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762085727,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762084612,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762083903,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 59.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762082626,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762081416,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762080271,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762079177,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762078095,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762077401,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762076019,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762074941,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762074010,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762072693,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762071599,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762070510,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762069418,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762068009,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762067292,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762065994,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762065135,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762064196,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762062820,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762061735,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762060505,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762059281,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762058116,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762057436,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762055837,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762054745,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762054054,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762052698,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762051600,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762050367,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.7,
-        "envHumidity": 85.7,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762048997,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762047912,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762046992,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 56.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762045551,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762044850,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762043914,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762042519,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 117,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762041834,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762040569,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762039463,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762038387,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762037531,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 56.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762036254,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762035172,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762034491,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762033211,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762032497,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762031473,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762030197,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762029492,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762028148,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762027070,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762026374,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762025108,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762024023,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762022903,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.1,
-        "envHumidity": 86.1,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762022232,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762020965,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762020263,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762019249,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762017989,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.2,
-        "envHumidity": 86.2,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762016821,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762015736,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762015041,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762014119,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762012617,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 86.0,
-        "envHumidity": 86.0,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.9,
-        "envBmpAddress": "77",
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762011930,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 59.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762010664,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.8,
-        "envHumidity": 85.8,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.7,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762009575,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762008490,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.5,
-        "envHumidity": 85.5,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762007360,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 88,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762006339,
-      "values": {
-        "k10Temperature": 29.83,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762005073,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.5,
-        "envHumidity": 85.5,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762003980,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 89,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762002835,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.6,
-        "envHumidity": 85.6,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1003.8,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762002136,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 59.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762000810,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ]
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778762000124,
-      "values": {
-        "k10Temperature": 29.85,
-        "light": 59.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778761999266,
-      "values": {
-        "k10Temperature": 29.84,
-        "light": 57.0,
-        "ip": "0.0.0.0"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778761998002,
-      "values": {
-        "temperature": 20.4,
-        "envTemperature": 20.4,
-        "humidity": 85.9,
-        "envHumidity": 85.9,
-        "envBmpTemperature": 21.2,
-        "envPressure": 1004.0,
-        "envBmpAddress": "77"
-      }
-    },
-    {
-      "type": "telemetry",
-      "at": 1778761996913,
-      "values": {
-        "i2cDevices": [
-          {
-            "address": "0x27",
-            "name": "LCD_I2C"
-          },
-          {
-            "address": "0x38",
-            "name": "AHT20_AHT21"
-          },
-          {
-            "address": "0x5A",
-            "name": "GY33_CONTROLLER"
-          },
-          {
-            "address": "0x77",
-            "name": "BMP_BME280"
-          }
-        ],
-        "color": {
-          "r": 219,
-          "g": 118,
-          "b": 89,
-          "redRaw": null,
-          "greenRaw": null,
-          "blueRaw": null,
-          "clear": null,
-          "lux": null,
-          "ct": null
-        }
-      }
+      "type": "mqtt",
+      "at": 1779090623554,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090623500,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090623447,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090623396,
+      "command": "HEAD_RIGHT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090623394,
+      "command": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090621162,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090621118,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090621116,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "UNKNOWN P_NG"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090621071,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090621069,
+      "command": "HEAD_RIGHT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090621015,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "command",
+      "at": 1779090621012,
+      "command": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090620985,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090619254,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED HEAD_LEFT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090619207,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_LEFT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090619148,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_LEFT"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090619022,
+      "command": "HEAD_LEFT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090619019,
+      "command": "HEAD_LEFT"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090616094,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090616049,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090615993,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090615207,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090615154,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090615038,
+      "command": "HEAD_RIGHT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090615035,
+      "command": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090612493,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090612447,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090612390,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090612165,
+      "command": "ARM_RIGHT_CENTER",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090612162,
+      "command": "ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090611059,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090611057,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090611004,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090608450,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090608395,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_CENTER"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090608119,
+      "command": "ARM_LEFT_CENTER",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090608114,
+      "command": "ARM_LEFT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090607266,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090607216,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090607167,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090606925,
+      "command": "ARM_RIGHT_UP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090606922,
+      "command": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090605959,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090605737,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090605689,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090605632,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090605565,
+      "command": "ARM_LEFT_UP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090605562,
+      "command": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090601161,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090601160,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090601158,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "UNKNOWN P_NG"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090601108,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090601021,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090601018,
+      "command": "ARM_LEFT_DOWN",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090600971,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "command",
+      "at": 1779090600970,
+      "command": "ARM_LEFT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090600883,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090600830,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_DOWN"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090600488,
+      "command": "ARM_LEFT_DOWN",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090600483,
+      "command": "ARM_LEFT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090598357,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED ARM_RIGHT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090598306,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090598258,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_DOWN"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090598014,
+      "command": "ARM_RIGHT_DOWN",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090598010,
+      "command": "ARM_RIGHT_DOWN"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090596076,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "UNKNOWN PONG"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090596030,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090596028,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090595970,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090595244,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090595187,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090594933,
+      "command": "ARM_RIGHT_UP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090594930,
+      "command": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090592522,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090592475,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090592422,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090592164,
+      "command": "ARM_RIGHT_CENTER",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090592161,
+      "command": "ARM_RIGHT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090590989,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090586050,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090586003,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090585958,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090583880,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090583832,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_CENTER"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090583781,
+      "command": "ARM_LEFT_CENTER",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090583778,
+      "command": "ARM_LEFT_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090581493,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "RECEIVED ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090581446,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090581391,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090581158,
+      "command": "ARM_LEFT_UP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090581155,
+      "command": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090581026,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090581024,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090581022,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090580972,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "BODY_READY"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090580840,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090580786,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"online\":false}"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090577069,
+      "command": "ARM_LEFT_UP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090577066,
+      "command": "ARM_LEFT_UP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090576118,
+      "command": "ARM_RIGHT_UP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090576114,
+      "command": "ARM_RIGHT_UP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090574671,
+      "command": "STOP",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090574626,
+      "command": "STOP"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090573188,
+      "command": "HEAD_CENTER",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090573162,
+      "command": "HEAD_CENTER"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090569434,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090564543,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090564496,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090564447,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090560964,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090560912,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090560677,
+      "command": "HEAD_RIGHT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090560674,
+      "command": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090559502,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090559501,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090559451,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090554451,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090553954,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "UNKNOWN P_THEAD_LEFT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090553896,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_LEFT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090553847,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_LEFT"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090553798,
+      "command": "HEAD_LEFT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090553795,
+      "command": "HEAD_LEFT"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090549521,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090549473,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090549418,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090549309,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090549239,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt-command",
+      "at": 1779090548942,
+      "command": "HEAD_RIGHT",
+      "topic": "modubotic/robot/pink/command"
+    },
+    {
+      "type": "command",
+      "at": 1779090548939,
+      "command": "HEAD_RIGHT"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090544535,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090544488,
+      "topic": "modubotic/robot/pink/debug/body-rx",
+      "payload": "PONG"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090544432,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt",
+      "at": 1779090539431,
+      "topic": "modubotic/robot/pink/debug/body-tx",
+      "payload": "PING"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779090536459,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"mindType\":\"cyd\",\"ip\":\"10.0.10.161\",\"online\":true}"
+    },
+    {
+      "type": "mqtt-status",
+      "at": 1779034304049,
+      "topic": "modubotic/robot/pink/status",
+      "payload": "{\"robotId\":\"pink\",\"online\":false}"
     }
   ],
-  "commands": [],
-  "pendingCommand": null,
-  "lastCommand": {
+  "commands": [
+    {
+      "command": "HEAD_CENTER",
+      "at": 1779090624674
+    },
+    {
+      "command": "HEAD_RIGHT",
+      "at": 1779090623394
+    },
+    {
+      "command": "HEAD_LEFT",
+      "at": 1779090619019
+    },
+    {
+      "command": "ARM_RIGHT_CENTER",
+      "at": 1779090612162
+    },
+    {
+      "command": "ARM_LEFT_CENTER",
+      "at": 1779090608114
+    },
+    {
+      "command": "ARM_RIGHT_UP",
+      "at": 1779090606922
+    },
+    {
+      "command": "ARM_LEFT_UP",
+      "at": 1779090605562
+    },
+    {
+      "command": "ARM_LEFT_DOWN",
+      "at": 1779090600970
+    },
+    {
+      "command": "ARM_RIGHT_DOWN",
+      "at": 1779090598010
+    },
+    {
+      "command": "STOP",
+      "at": 1779090574626
+    }
+  ],
+  "pendingCommand": {
     "command": "HEAD_CENTER",
-    "at": 1778762093998
+    "at": 1779090624674
+  },
+  "lastCommand": {
+    "command": "I2C_SCAN",
+    "at": 1779090655846,
+    "source": "mqtt"
   },
   "lastMotionRequest": {
-    "at": 1778762219344,
+    "at": 1778803150120,
     "method": "POST",
-    "client": "10.0.10.193",
+    "client": "10.0.10.17",
     "payload": {
-      "ip": "0.0.0.0",
-      "temperature": "29.99",
-      "light": "46",
-      "body": "\r\n"
+      "device": "CYD ESP32",
+      "ip": "10.0.10.17",
+      "body": "device=CYD%20ESP32&ip=10.0.10.17"
     },
     "response": "NONE"
   },
-  "motionRequestCount": 32178,
+  "motionRequestCount": 61491,
   "lastPollRequest": null,
   "pollRequestCount": 0,
   "lastTelemetryRequest": {
-    "at": 1778762220034,
+    "at": 1778762436998,
     "client": "10.0.10.193",
     "payload": {
-      "env": "20.5,86.2,21.3,1003.7,77",
-      "body": "\r\n",
-      "ahtTemperature": "20.5",
-      "ahtHumidity": "86.2",
-      "bmpTemperature": "21.3",
-      "pressure": "1003.7",
-      "bmpAddress": "77",
-      "source": "aht20_bmp280"
+      "i2c": "27:LCD_I2C,38:AHT20_AHT21,5A:GY33_CONTROLLER,77:BMP_BME280",
+      "body": "\r\n"
     },
     "response": "OK"
   },
-  "telemetryRequestCount": 39435,
+  "telemetryRequestCount": 39564,
   "lastDhtRequestAt": 1778602853678
 }

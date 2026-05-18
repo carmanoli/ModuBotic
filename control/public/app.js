@@ -35,7 +35,9 @@ const ids = {
   lastPollHit: document.querySelector("#last-poll-hit"),
   telemetryCount: document.querySelector("#telemetry-count"),
   lastTelemetryHit: document.querySelector("#last-telemetry-hit"),
+  mqttStatus: document.querySelector("#mqtt-status"),
   i2cDevices: document.querySelector("#i2c-devices"),
+  scanI2c: document.querySelector("#scan-i2c"),
   readColor: document.querySelector("#read-color"),
   debugColor: document.querySelector("#debug-color"),
   colorSwatch: document.querySelector("#color-swatch"),
@@ -245,7 +247,7 @@ async function refresh() {
   const response = await fetch("/api/status", { cache: "no-store" });
   const state = await response.json();
 
-  ids.device.textContent = state.device || "UNIHIKER K10";
+  ids.device.textContent = state.device || "A espera de mind";
   const hasEnv = isFresh(state.envUpdatedAt);
   const hasGas = state.gas !== null && state.gas !== undefined && state.gas !== "";
 
@@ -261,10 +263,10 @@ async function refresh() {
   ids.light.textContent = formatMetric(state.light);
   if (ids.gas) ids.gas.textContent = formatMetric(state.gas);
   ids.ip.textContent = state.ip || "--";
-  ids.message.textContent = state.message || "A espera de dados do K10";
+  ids.message.textContent = state.message || "A espera de dados da mind";
   ids.lastCommand.textContent = state.lastCommand?.command || "--";
   renderColorReading(state.color, state.colorUpdatedAt);
-  renderI2cDevices(state.i2cDevices || [], state.i2cUpdatedAt);
+  renderI2cDevices(state.i2cDevices || [], state.i2cUpdatedAt, state);
 
   const online = isOnline(state.updatedAt);
   ids.status.textContent = online ? "online" : "offline";
@@ -307,18 +309,39 @@ function formatI2cDeviceName(name) {
   return String(name || "UNKNOWN").replaceAll("_", " ");
 }
 
-function renderI2cDevices(devices, updatedAt) {
+function renderI2cDevices(devices, updatedAt, state = {}) {
   if (!ids.i2cDevices) return;
 
   ids.i2cDevices.innerHTML = "";
+  const isScanning = state.i2cScanStatus === "scanning";
+
+  if (ids.scanI2c) {
+    ids.scanI2c.disabled = isScanning;
+    ids.scanI2c.textContent = isScanning ? "Scan I2C em curso..." : "Scan I2C";
+  }
+
+  if (isScanning) {
+    const pending = document.createElement("div");
+    pending.className = "i2c-empty";
+    pending.textContent = `Scan pedido ${formatTime(state.i2cScanRequestedAt)}; a espera do robot`;
+    ids.i2cDevices.appendChild(pending);
+    return;
+  }
 
   if (!devices.length) {
     const empty = document.createElement("div");
     empty.className = "i2c-empty";
-    empty.textContent = updatedAt ? "Nenhum dispositivo I2C" : "A espera do scan I2C";
+    empty.textContent = updatedAt
+      ? `Nenhum dispositivo I2C (${formatTime(updatedAt)})`
+      : "Sem scan I2C nesta sessao";
     ids.i2cDevices.appendChild(empty);
     return;
   }
+
+  const summary = document.createElement("div");
+  summary.className = "i2c-empty";
+  summary.textContent = `Ultimo scan ${formatTime(updatedAt)}`;
+  ids.i2cDevices.appendChild(summary);
 
   for (const device of devices) {
     const row = document.createElement("div");
@@ -335,6 +358,11 @@ function renderI2cDevices(devices, updatedAt) {
   }
 }
 
+async function scanI2cBus() {
+  await fetch("/api/i2c/scan", { method: "POST" });
+  await refresh();
+}
+
 function formatHistoryItem(item) {
   if (item.type === "camera") return "camera";
   if (item.type === "command") return `cmd ${item.command}`;
@@ -347,7 +375,7 @@ function formatHistoryItem(item) {
   }
 
   const parts = [];
-  if (values.k10Temperature !== undefined) parts.push(`K10 ${formatMetric(values.k10Temperature, " C")}`);
+  if (values.k10Temperature !== undefined) parts.push(`Mind ${formatMetric(values.k10Temperature, " C")}`);
   if (values.envTemperature !== undefined) parts.push(`AHT20 ${formatMetric(values.envTemperature, " C")}`);
   if (values.envHumidity !== undefined) parts.push(`AHT20 H ${formatMetric(values.envHumidity, " %")}`);
   if (values.envPressure !== undefined) parts.push(`BMP280 ${formatMetric(values.envPressure, " hPa")}`);
@@ -378,6 +406,21 @@ async function refreshCommandDebug() {
   ids.lastTelemetryHit.textContent = debug.lastTelemetryRequest
     ? `${formatTime(debug.lastTelemetryRequest.at)} ${debug.lastTelemetryRequest.client} -> ${debug.lastTelemetryRequest.response || ""}`
     : "--";
+  if (ids.mqttStatus) {
+    const mqtt = debug.mqtt || {};
+    if (!mqtt.enabled) {
+      ids.mqttStatus.textContent = "off";
+    } else if (!mqtt.available) {
+      ids.mqttStatus.textContent = "sem paho-mqtt";
+    } else if (mqtt.connected) {
+      const last = mqtt.lastMessage
+        ? ` | ${formatTime(mqtt.lastMessage.at)} ${mqtt.lastMessage.topic}: ${mqtt.lastMessage.payload}`
+        : "";
+      ids.mqttStatus.textContent = `online ${mqtt.commandTopic}${last}`;
+    } else {
+      ids.mqttStatus.textContent = `offline ${mqtt.host}:${mqtt.port} ${mqtt.lastError || ""}`;
+    }
+  }
 }
 
 async function sendCommand(command) {
@@ -428,6 +471,8 @@ ids.clearTelemetry?.addEventListener("click", async () => {
   await fetch("/api/telemetry/clear", { method: "POST" });
   await refresh();
 });
+
+ids.scanI2c?.addEventListener("click", scanI2cBus);
 
 ids.readColor?.addEventListener("click", async () => {
   await sendCommand("GY33_READ");

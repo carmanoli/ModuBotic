@@ -49,6 +49,12 @@
 
 const unsigned long BAUD_CONSOLE = 115200;
 const unsigned long BAUD_LINK = 9600;
+const int MAX_LINK_COMMAND_LENGTH = 40;
+const unsigned long BODY_TELEMETRY_INTERVAL_MS = 2000;
+const bool BODY_ENABLE_AUTO_SENSOR_TELEMETRY = false;
+const bool BODY_ENABLE_AUTO_I2C_SCAN = false;
+const bool BODY_DEBUG_LINK_NOISE = false;
+const unsigned long LINK_NOISE_REPORT_INTERVAL_MS = 60000;
 
 const int LEFT_ARM_SERVO_PIN = 12;
 const int HEAD_SERVO_PIN = 11;
@@ -86,6 +92,9 @@ Servo rightArmServo;
 Servo leftWheelServo;
 Servo rightWheelServo;
 unsigned long lastBodyServoMoveAt = 0;
+unsigned long lastBodyTelemetryAt = 0;
+unsigned long lastLinkNoiseReportAt = 0;
+unsigned int ignoredLinkNoiseCount = 0;
 int activeLeftWheelUs = LEFT_WHEEL_STOP_US;
 int activeRightWheelUs = RIGHT_WHEEL_STOP_US;
 bool wheelsActive = false;
@@ -93,6 +102,9 @@ unsigned long lastI2cAutoEnableAt = 0;
 
 void handleCommand(String command, const char *source);
 bool isIgnoredK10Message(const String &command);
+bool isValidLinkCommandText(const String &command);
+void recordIgnoredLinkNoise();
+void updateBodyTelemetry();
 void autoEnableDetectedI2cSensors();
 
 void setup() {
@@ -146,17 +158,7 @@ void loop() {
   readConsole();
   readK10();
 
-  updateGy33ColorSensor();
-  printGy33ReadingToSerial();
-  printGy33TelemetryToStream(Serial1);
-  clearGy33ReadingUpdated();
-  updateAht20Bmp280Sensor();
-  printAht20Bmp280ReadingToSerial();
-  printAht20Bmp280TelemetryToStream(Serial1);
-  clearAht20Bmp280ReadingUpdated();
-  updateI2cBusWatchdog(Serial1);
-  autoEnableDetectedI2cSensors();
-  updateLcdTelemetry(getAht20TemperatureC(), getAht20Humidity(), isAht20Bmp280ReadingOk());
+  updateBodyTelemetry();
   updateKeypadMenu(handleCommand);
   updateEyes();
   detachIdleServos();
@@ -190,6 +192,10 @@ void readK10() {
       k10Line = "";
     } else {
       k10Line += c;
+      if (k10Line.length() > MAX_LINK_COMMAND_LENGTH) {
+        k10Line = "";
+        recordIgnoredLinkNoise();
+      }
     }
   }
 }
@@ -204,6 +210,11 @@ void handleCommand(String command, const char *source) {
   }
 
   if (command == "NONE" || isIgnoredK10Message(command)) {
+    return;
+  }
+
+  if (strcmp(source, "K10") == 0 && !isValidLinkCommandText(command)) {
+    recordIgnoredLinkNoise();
     return;
   }
 
@@ -260,6 +271,66 @@ bool isIgnoredK10Message(const String &command) {
          command == "HTTP ERROR" ||
          command == "TIMEOUT" ||
          command == "REQUEST TIMEOUT";
+}
+
+bool isValidLinkCommandText(const String &command) {
+  if (command.length() == 0 || command.length() > MAX_LINK_COMMAND_LENGTH) {
+    return false;
+  }
+
+  for (unsigned int i = 0; i < command.length(); i++) {
+    char c = command.charAt(i);
+    if (!((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_')) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+void recordIgnoredLinkNoise() {
+  ignoredLinkNoiseCount++;
+
+  if (BODY_DEBUG_LINK_NOISE) {
+    Serial.println("BODY: IGNORED LINK NOISE");
+    return;
+  }
+
+  unsigned long now = millis();
+  if (now - lastLinkNoiseReportAt < LINK_NOISE_REPORT_INTERVAL_MS) {
+    return;
+  }
+
+  lastLinkNoiseReportAt = now;
+  Serial.print("BODY: ignored link noise x");
+  Serial.println(ignoredLinkNoiseCount);
+  ignoredLinkNoiseCount = 0;
+}
+
+void updateBodyTelemetry() {
+  unsigned long now = millis();
+
+  if (BODY_ENABLE_AUTO_I2C_SCAN) {
+    updateI2cBusWatchdog(Serial1);
+    autoEnableDetectedI2cSensors();
+  }
+
+  if (!BODY_ENABLE_AUTO_SENSOR_TELEMETRY || now - lastBodyTelemetryAt < BODY_TELEMETRY_INTERVAL_MS) {
+    return;
+  }
+  lastBodyTelemetryAt = now;
+
+  updateGy33ColorSensor();
+  printGy33ReadingToSerial();
+  printGy33TelemetryToStream(Serial1);
+  clearGy33ReadingUpdated();
+
+  updateAht20Bmp280Sensor();
+  printAht20Bmp280ReadingToSerial();
+  printAht20Bmp280TelemetryToStream(Serial1);
+  clearAht20Bmp280ReadingUpdated();
+
+  updateLcdTelemetry(getAht20TemperatureC(), getAht20Humidity(), isAht20Bmp280ReadingOk());
 }
 
 bool isKnownCommand(const String &command) {
@@ -522,6 +593,9 @@ void stopWheels() {
 void runWheelsForDuration(unsigned long durationMs) {
   unsigned long startedAt = millis();
   while (millis() - startedAt < durationMs) {
+    readConsole();
+    readK10();
+    updateEyes();
     delay(10);
   }
 }

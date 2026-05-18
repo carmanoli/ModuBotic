@@ -7,11 +7,16 @@ const unsigned long I2C_WATCHDOG_BOOT_DELAY_MS = 2500;
 const unsigned long I2C_WATCHDOG_SCAN_INTERVAL_MS = 5000;
 const unsigned long I2C_WATCHDOG_CLOCK_HZ = 50000;
 const byte I2C_MAX_DEVICES = 24;
+const byte I2C_WATCHDOG_ADDRESSES_PER_LOOP = 4;
 
 bool i2cWatchdogStarted = false;
 bool i2cWatchdogReportedOnce = false;
 bool i2cDetectedGy33 = false;
 bool i2cDetectedEnvironment = false;
+bool i2cWatchdogScanInProgress = false;
+byte i2cWatchdogNextAddress = 1;
+byte i2cWatchdogAddressCount = 0;
+byte i2cWatchdogAddresses[I2C_MAX_DEVICES];
 unsigned long lastI2cWatchdogScanAt = 0;
 char lastI2cSignature[420] = "";
 
@@ -34,12 +39,49 @@ void updateI2cBusWatchdog(Stream &telemetryStream) {
     return;
   }
 
-  if (i2cWatchdogReportedOnce && now - lastI2cWatchdogScanAt < I2C_WATCHDOG_SCAN_INTERVAL_MS) {
+  if (!i2cWatchdogScanInProgress && i2cWatchdogReportedOnce && now - lastI2cWatchdogScanAt < I2C_WATCHDOG_SCAN_INTERVAL_MS) {
     return;
   }
 
+  if (!i2cWatchdogScanInProgress) {
+    startI2cWatchdogIfNeeded();
+    i2cWatchdogScanInProgress = true;
+    i2cWatchdogNextAddress = 1;
+    i2cWatchdogAddressCount = 0;
+  }
+
+  byte scanned = 0;
+  while (i2cWatchdogNextAddress < 127 && scanned < I2C_WATCHDOG_ADDRESSES_PER_LOOP) {
+    if (i2cWatchdogAddressResponds(i2cWatchdogNextAddress)) {
+      if (i2cWatchdogAddressCount < I2C_MAX_DEVICES) {
+        i2cWatchdogAddresses[i2cWatchdogAddressCount] = i2cWatchdogNextAddress;
+      }
+      i2cWatchdogAddressCount++;
+    }
+
+    i2cWatchdogNextAddress++;
+    scanned++;
+  }
+
+  if (i2cWatchdogNextAddress < 127) {
+    return;
+  }
+
+  char signature[sizeof(lastI2cSignature)];
+  byte count = i2cWatchdogAddressCount > I2C_MAX_DEVICES ? I2C_MAX_DEVICES : i2cWatchdogAddressCount;
+
+  updateKnownI2cDeviceFlags(i2cWatchdogAddresses, count);
+  buildI2cSignature(i2cWatchdogAddresses, count, signature, sizeof(signature));
+
+  if (!i2cWatchdogReportedOnce || strcmp(signature, lastI2cSignature) != 0) {
+    strncpy(lastI2cSignature, signature, sizeof(lastI2cSignature) - 1);
+    lastI2cSignature[sizeof(lastI2cSignature) - 1] = '\0';
+    publishI2cDevices(telemetryStream, signature);
+  }
+
+  i2cWatchdogReportedOnce = true;
+  i2cWatchdogScanInProgress = false;
   lastI2cWatchdogScanAt = now;
-  scanI2cBusWatchdogNow(telemetryStream);
 }
 
 void scanI2cBusWatchdogNow(Stream &telemetryStream, bool forcePublish) {
@@ -153,8 +195,8 @@ void publishI2cDevices(Stream &telemetryStream, const char *signature) {
   Serial.print("I2C WATCHDOG: ");
   Serial.println(signature);
 
-  telemetryStream.print("env=&i2c=");
-  telemetryStream.print(signature);
+  telemetryStream.print("i2c=");
+  telemetryStream.println(signature);
 }
 
 void updateKnownI2cDeviceFlags(const byte *addresses, byte count) {
